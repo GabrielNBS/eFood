@@ -2,6 +2,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import Header from './Components/Header'
 import ProductList from './Components/ProductList'
 import GlobalStyle from './styles'
+import Footer from './Components/Footer'
 
 const rotas = createBrowserRouter([
   {
@@ -14,9 +15,9 @@ function App() {
   return (
     <>
       <GlobalStyle />
-      <Header />
-      <ProductList />
       <RouterProvider router={rotas} />
+      <ProductList />
+      <Footer />
     </>
   )
 }
