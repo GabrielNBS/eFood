@@ -1,8 +1,13 @@
+import Header from './Components/Header'
+import Product from './Components/Product'
+import GlobalStyle from './styles'
+
 function App() {
   return (
     <>
-      <div>Hello Word!</div>
-      <p>Base para Projetos em React + TypeScript</p>
+      <GlobalStyle />
+      <Header />
+      <Product />
     </>
   )
 }
