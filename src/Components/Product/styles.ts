@@ -7,6 +7,7 @@ export const Card = styled.div`
   position: relative;
   max-width: 472px;
   background-color: ${cores.brancoPuro};
+  border: 1px solid ${cores.vermelho};
 
   ${TagContainer} {
     position: absolute;
