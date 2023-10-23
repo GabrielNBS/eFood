@@ -1,0 +1,49 @@
+import styled from 'styled-components'
+import { TagContainer } from '../Tag/styles'
+import { cores } from '../../styles'
+
+export const Card = styled.div`
+  position: relative;
+  max-width: 472px;
+  background-color: ${cores.brancoPuro};
+
+  ${TagContainer} {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+  }
+
+  button {
+    margin: 0 0 8px 8px;
+  }
+`
+
+export const Titulo = styled.h2`
+  color: ${cores.vermelho};
+  font-size: 18px;
+  font-weight: 700;
+`
+
+export const Paragrafo = styled.p`
+  color: ${cores.vermelho};
+  font-size: 14px;
+  line-height: 22px;
+  margin: 16px 8px;
+`
+export const Restaurante = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin: 8px 8px 0;
+`
+
+export const Avaliacoes = styled.div`
+  display: flex;
+  align-items: center;
+
+  span {
+    font-size: 18px;
+    font-weight: 700;
+    color: ${cores.vermelho};
+    margin-right: 8px;
+  }
+`
