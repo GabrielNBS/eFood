@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import { TagContainer } from '../Tag/styles'
 import { cores } from '../../styles'
+import { ButtonLink } from '../Button/styles'
 
 export const Card = styled.div`
   position: relative;
@@ -13,7 +14,7 @@ export const Card = styled.div`
     right: 16px;
   }
 
-  button {
+  ${ButtonLink} {
     margin: 0 0 8px 8px;
   }
 `

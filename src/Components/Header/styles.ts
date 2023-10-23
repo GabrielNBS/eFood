@@ -5,7 +5,7 @@ export const HeaderSection = styled.section`
   justify-content: center;
   background: ${cores.amarelo};
 
-  div{
+  div {
     display: flex;
     flex-direction: column;
     align-items: center;

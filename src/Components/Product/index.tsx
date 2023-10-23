@@ -1,6 +1,7 @@
 import Tag from '../Tag'
 import estrela from '../../assets/images/estrela.svg'
 import { Card, Paragrafo, Titulo, Restaurante, Avaliacoes } from './styles'
+import Button from '../Button'
 
 const Product = () => (
   <Card>
@@ -18,7 +19,7 @@ const Product = () => (
       officia. Vero sint id at eum neque culpa a temporibus! Blanditiis magni
       incidunt architecto quia omnis dicta magnam nulla facilis.
     </Paragrafo>
-    <button type="button">Saiba mais</button>
+    <Button title="Clique aqui para saber mais">Saiba mais</Button>
   </Card>
 )
 
