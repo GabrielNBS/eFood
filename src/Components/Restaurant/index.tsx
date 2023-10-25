@@ -4,26 +4,38 @@ import { Card, Paragrafo, Titulo, Restaurante, Avaliacoes } from './styles'
 import Button from '../Button'
 import { Link } from 'react-router-dom'
 
-const Product = () => (
-  <Card>
-    <img src="//placehold.it/472x217" alt="Hioki Sushi" />
-    <Tag>Japonesa</Tag>
+type Props = {
+  name: string
+  description: string
+  image: string
+  infos: string[]
+  avaliacoes: number
+  id: number
+}
+
+const Restaurant = ({
+  avaliacoes,
+  description,
+  id,
+  image,
+  infos,
+  name,
+}: Props) => (
+  <Card key={id}>
+    <img src={image} alt="Hioki Sushi" />
+    <Tag>{infos}</Tag>
     <Restaurante>
-      <Titulo>Nome Restaurante</Titulo>
+      <Titulo>{name}</Titulo>
       <Avaliacoes>
-        <span>4.9</span>
+        <span>{avaliacoes}</span>
         <img src={estrela} alt="Estrela de avaliacao" />
       </Avaliacoes>
     </Restaurante>
-    <Paragrafo>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea, maiores
-      officia. Vero sint id at eum neque culpa a temporibus! Blanditiis magni
-      incidunt architecto quia omnis dicta magnam nulla facilis.
-    </Paragrafo>
+    <Paragrafo>{description}</Paragrafo>
     <Link to="/restaurant">
       <Button title="Clique aqui para saber mais">Saiba mais</Button>
     </Link>
   </Card>
 )
 
-export default Product
+export default Restaurant

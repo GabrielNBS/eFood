@@ -13,13 +13,15 @@ const Header = ({ restaurantStyle }: Props) => (
       <>
         <div className="container restaurant">
           <Link to="/">Restaurantes</Link>
-          <Logo>
-            <img
-              src={logo}
-              alt="Logo eFood
+          <Link to="/">
+            <Logo>
+              <img
+                src={logo}
+                alt="Logo eFood
         "
-            />
-          </Logo>
+              />
+            </Logo>
+          </Link>
           <span>0 produtos(s) no carrinho</span>
         </div>
         <Banner />
