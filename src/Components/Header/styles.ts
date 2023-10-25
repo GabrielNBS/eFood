@@ -28,3 +28,13 @@ export const HeaderSection = styled.section`
     }
   }
 `
+
+export const Paragrafo = styled.p`
+  margin-bottom: 40px;
+  color: ${cores.vermelho};
+  font-size: 36px;
+  font-weight: 900;
+  text-align: center;
+  margin-top: 74px;
+  padding-bottom: 40px;
+`

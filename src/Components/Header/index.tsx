@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import logo from '../../assets/images/logo.svg'
-import { HeaderSection, Logo } from './styles'
+import { HeaderSection, Logo, Paragrafo } from './styles'
 import Banner from '../Banner'
 
 type Props = {
@@ -10,17 +10,20 @@ type Props = {
 const Header = ({ restaurantStyle }: Props) => (
   <HeaderSection>
     {restaurantStyle ? (
-      <div className="container restaurant">
-        <Link to="/">Restaurantes</Link>
-        <Logo>
-          <img
-            src={logo}
-            alt="Logo eFood
+      <>
+        <div className="container restaurant">
+          <Link to="/">Restaurantes</Link>
+          <Logo>
+            <img
+              src={logo}
+              alt="Logo eFood
         "
-          />
-        </Logo>
-        <span>0 produtos(s) no carrinho</span>
-      </div>
+            />
+          </Logo>
+          <span>0 produtos(s) no carrinho</span>
+        </div>
+        <Banner />
+      </>
     ) : (
       <>
         <div className="container home">
@@ -32,7 +35,11 @@ const Header = ({ restaurantStyle }: Props) => (
             />
           </Logo>
         </div>
-        <Banner />
+        <Paragrafo>
+          Viva experiências gastronômicas
+          <br />
+          no conforto da sua casa
+        </Paragrafo>
       </>
     )}
   </HeaderSection>
