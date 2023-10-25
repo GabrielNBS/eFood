@@ -24,7 +24,6 @@ const Header = ({ restaurantStyle }: Props) => (
           </Link>
           <span>0 produtos(s) no carrinho</span>
         </div>
-        <Banner />
       </>
     ) : (
       <>

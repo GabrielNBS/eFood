@@ -1,6 +1,13 @@
 import Tag from '../Tag'
 import estrela from '../../assets/images/estrela.svg'
-import { Card, Paragrafo, Titulo, Restaurante, Avaliacoes } from './styles'
+import {
+  Card,
+  Paragrafo,
+  Titulo,
+  Restaurante,
+  Avaliacoes,
+  Infos,
+} from './styles'
 import Button from '../Button'
 import { Link } from 'react-router-dom'
 
@@ -23,7 +30,11 @@ const Restaurant = ({
 }: Props) => (
   <Card key={id}>
     <img src={image} alt="Hioki Sushi" />
-    <Tag>{infos}</Tag>
+    <Infos>
+      {infos.map((info) => (
+        <Tag key={info}>{info}</Tag>
+      ))}
+    </Infos>
     <Restaurante>
       <Titulo>{name}</Titulo>
       <Avaliacoes>

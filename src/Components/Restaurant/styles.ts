@@ -10,14 +10,18 @@ export const Card = styled.div`
   border: 1px solid ${cores.vermelho};
 
   ${TagContainer} {
-    position: absolute;
-    top: 16px;
-    right: 16px;
+    margin-right: 16px;
   }
 
   ${ButtonLink} {
     margin: 0 0 8px 8px;
   }
+`
+
+export const Infos = styled.div`
+  position: absolute;
+  top: 16px;
+  right: 16px;
 `
 
 export const Titulo = styled.h2`

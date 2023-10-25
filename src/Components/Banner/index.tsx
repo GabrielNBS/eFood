@@ -1,10 +1,15 @@
 import { Img, Local, TItulo } from './styles'
 import BannerIMG from '../../assets/images/La Dolce Vita Trattoria/capa-restaurante.png'
 
-const Banner = () => (
+type Props = {
+  local: string
+  name: string
+}
+
+const Banner = ({ local, name }: Props) => (
   <Img style={{ backgroundImage: `url(${BannerIMG})` }}>
-    <Local>italiana</Local>
-    <TItulo>La Dolce Vita Trattoria</TItulo>
+    <Local>{local}</Local>
+    <TItulo>{name}</TItulo>
   </Img>
 )
 
