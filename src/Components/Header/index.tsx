@@ -1,7 +1,12 @@
+import { ReactNode } from 'react'
 import logo from '../../assets/images/logo.svg'
 import { HeaderSection, Logo } from './styles'
 
-const Header = () => (
+type Props = {
+  children?: JSX.Element
+}
+
+const Header = ({ children }: Props) => (
   <HeaderSection>
     <div className="container">
       <Logo>

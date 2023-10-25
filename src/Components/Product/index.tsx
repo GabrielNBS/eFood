@@ -19,7 +19,9 @@ const Product = () => (
       officia. Vero sint id at eum neque culpa a temporibus! Blanditiis magni
       incidunt architecto quia omnis dicta magnam nulla facilis.
     </Paragrafo>
-    <Button title="Clique aqui para saber mais">Saiba mais</Button>
+    <Button title="Clique aqui para saber mais" to="/restaurant">
+      Saiba mais
+    </Button>
   </Card>
 )
 

@@ -6,4 +6,5 @@ export const ButtonLink = styled.button`
   background-color: ${cores.vermelho};
   padding: 4px 6px;
   border: none;
+  cursor: pointer;
 `
