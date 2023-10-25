@@ -3,6 +3,7 @@ import Header from './Components/Header'
 import ProductList from './Components/ProductList'
 import GlobalStyle from './styles'
 import Footer from './Components/Footer'
+import Banner from './Components/Banner'
 
 const rotas = createBrowserRouter([
   {
@@ -16,6 +17,7 @@ function App() {
     <>
       <GlobalStyle />
       <RouterProvider router={rotas} />
+      <Banner />
       <ProductList />
       <Footer />
     </>

@@ -1,5 +1,5 @@
 import logo from '../../assets/images/logo.svg'
-import { HeaderSection, Logo, Paragrafo } from './styles'
+import { HeaderSection, Logo } from './styles'
 
 const Header = () => (
   <HeaderSection>
@@ -11,11 +11,6 @@ const Header = () => (
         "
         />
       </Logo>
-      <Paragrafo>
-        Viva experiências gastronômicas
-        <br />
-        no conforto da sua casa
-      </Paragrafo>
     </div>
   </HeaderSection>
 )
