@@ -1,22 +1,40 @@
-import { ReactNode } from 'react'
+import { Link } from 'react-router-dom'
 import logo from '../../assets/images/logo.svg'
 import { HeaderSection, Logo } from './styles'
+import Banner from '../Banner'
 
 type Props = {
-  children?: JSX.Element
+  restaurantStyle?: boolean
 }
 
-const Header = ({ children }: Props) => (
+const Header = ({ restaurantStyle }: Props) => (
   <HeaderSection>
-    <div className="container">
-      <Logo>
-        <img
-          src={logo}
-          alt="Logo eFood
+    {restaurantStyle ? (
+      <div className="container restaurant">
+        <Link to="/">Restaurantes</Link>
+        <Logo>
+          <img
+            src={logo}
+            alt="Logo eFood
         "
-        />
-      </Logo>
-    </div>
+          />
+        </Logo>
+        <span>0 produtos(s) no carrinho</span>
+      </div>
+    ) : (
+      <>
+        <div className="container home">
+          <Logo>
+            <img
+              src={logo}
+              alt="Logo eFood
+        "
+            />
+          </Logo>
+        </div>
+        <Banner />
+      </>
+    )}
   </HeaderSection>
 )
 

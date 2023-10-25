@@ -1,16 +1,30 @@
 import styled from 'styled-components'
 import { cores } from '../../styles'
 
+export const Logo = styled.h1`
+  margin: 64px 0;
+`
+
 export const HeaderSection = styled.section`
   justify-content: center;
   background: ${cores.amarelo};
 
-  div {
+  .home {
     display: flex;
     flex-direction: column;
     align-items: center;
   }
-`
-export const Logo = styled.h1`
-  margin: 64px 0 138.5px;
+
+  .restaurant {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    a,
+    span {
+      font-size: 18px;
+      font-weight: 900;
+      color: ${cores.vermelho};
+    }
+  }
 `

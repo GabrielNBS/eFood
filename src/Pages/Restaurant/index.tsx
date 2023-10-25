@@ -1,11 +1,9 @@
-import Banner from '../../Components/Banner'
+import Header from '../../Components/Header'
 import ProductList from '../../Components/ProductList'
-import RestaurantHeader from '../../Components/RestaurantHeader'
 
 const Restaurant = () => (
   <>
-    <RestaurantHeader />
-    <Banner />
+    <Header restaurantStyle />
     <ProductList />
   </>
 )

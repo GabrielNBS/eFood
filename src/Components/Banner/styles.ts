@@ -11,4 +11,5 @@ export const Paragrafo = styled.p`
 export const BannerSection = styled.div`
   background: ${cores.amarelo};
   padding-bottom: 40px;
+  margin-top: 74px;
 `
