@@ -1,21 +1,24 @@
-import Button from '../Button'
+import React from 'react'
 import * as S from './style'
+import Button from '../Button'
+import { Plate } from '../../models/Restaurant'
 
-const Plates = () => (
+type PlatesProps = {
+  cardapio: Plate[]
+}
+
+const Plates: React.FC<PlatesProps> = ({ cardapio }) => (
   <S.PlatesContainer className="container">
-    <S.Card>
-      <S.Img src="#" alt="" />
-      <S.NamePlate>Pizza</S.NamePlate>
-      <S.Description>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis sint
-        asperiores tempora quisquam beatae quasi, eveniet exercitationem
-        temporibus esse distinctio rerum, natus repellendus blanditiis. Enim
-        quisquam nesciunt omnis laudantium esse.
-      </S.Description>
-      <Button title="Adicionar ao carrinho" buttonStyle="secundary">
-        Adicionar ao carrinho
-      </Button>
-    </S.Card>
+    {cardapio.map((item, index) => (
+      <S.Card key={index}>
+        <S.Img src={item.imagePlate} alt={`imagem de uma ${item.namePlate}`} />
+        <S.NamePlate>{item.namePlate}</S.NamePlate>
+        <S.Description>{item.descriptionPlate}</S.Description>
+        <Button title="Adicionar ao carrinho" buttonStyle="secundary">
+          Adicionar ao carrinho
+        </Button>
+      </S.Card>
+    ))}
   </S.PlatesContainer>
 )
 

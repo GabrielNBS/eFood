@@ -19,6 +19,42 @@ const restaurant: Restaurants[] = [
         imagePlate: DolcevitaPlate,
         namePlate: 'Pizza Marguerita',
       },
+      {
+        descriptionPlate:
+          'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
+        imagePlate: DolcevitaPlate,
+        namePlate: 'Pizza Marguerita',
+      },
+      {
+        descriptionPlate:
+          'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
+        imagePlate: DolcevitaPlate,
+        namePlate: 'Pizza Marguerita',
+      },
+      {
+        descriptionPlate:
+          'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
+        imagePlate: DolcevitaPlate,
+        namePlate: 'Pizza Marguerita',
+      },
+      {
+        descriptionPlate:
+          'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
+        imagePlate: DolcevitaPlate,
+        namePlate: 'Pizza Marguerita',
+      },
+      {
+        descriptionPlate:
+          'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
+        imagePlate: DolcevitaPlate,
+        namePlate: 'Pizza Marguerita',
+      },
+      {
+        descriptionPlate:
+          'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
+        imagePlate: DolcevitaPlate,
+        namePlate: 'Pizza Marguerita',
+      },
     ],
   },
   {
@@ -34,7 +70,37 @@ const restaurant: Restaurants[] = [
         descriptionPlate:
           'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
         imagePlate: DolcevitaPlate,
-        namePlate: 'Pizza Marguerita',
+        namePlate: 'Sushi',
+      },
+      {
+        descriptionPlate:
+          'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
+        imagePlate: DolcevitaPlate,
+        namePlate: 'Sushi',
+      },
+      {
+        descriptionPlate:
+          'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
+        imagePlate: DolcevitaPlate,
+        namePlate: 'Sushi',
+      },
+      {
+        descriptionPlate:
+          'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
+        imagePlate: DolcevitaPlate,
+        namePlate: 'Sushi',
+      },
+      {
+        descriptionPlate:
+          'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
+        imagePlate: DolcevitaPlate,
+        namePlate: 'Sushi',
+      },
+      {
+        descriptionPlate:
+          'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
+        imagePlate: DolcevitaPlate,
+        namePlate: 'Sushi',
       },
     ],
   },

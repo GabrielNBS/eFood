@@ -26,7 +26,7 @@ class Restaurants {
   }
 }
 
-type Plate = {
+export type Plate = {
   namePlate: string
   descriptionPlate: string
   imagePlate: string

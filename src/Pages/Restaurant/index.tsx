@@ -13,7 +13,7 @@ const Restaurant = () => {
     return <div>Restaurante não encontrado.</div>
   }
 
-  const { name, infos, image } = selectedRestaurant
+  const { name, infos, image, cardapio } = selectedRestaurant
 
   const restaurantType = infos.length > 1 ? infos[1] : infos[0]
 
@@ -21,7 +21,7 @@ const Restaurant = () => {
     <>
       <Header restaurantStyle />
       <Banner local={restaurantType} name={name} photo={image} />
-      <Plates />
+      <Plates cardapio={cardapio} />
     </>
   )
 }
