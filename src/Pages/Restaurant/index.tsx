@@ -3,6 +3,7 @@ import Banner from '../../Components/Banner'
 import Header from '../../Components/Header'
 import ProductList from '../../Components/RestaurantList'
 import restaurant from '../../data'
+import Plates from '../../Components/Plates'
 
 const Restaurant = () => {
   const { id } = useParams()
@@ -20,6 +21,7 @@ const Restaurant = () => {
     <>
       <Header restaurantStyle />
       <Banner local={restaurantType} name={name} photo={image} />
+      <Plates />
     </>
   )
 }

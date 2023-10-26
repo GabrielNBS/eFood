@@ -5,6 +5,7 @@ class Restaurants {
   infos: string[]
   avaliacoes: number
   id: number
+  cardapio: Plate[]
 
   constructor(
     name: string,
@@ -12,7 +13,8 @@ class Restaurants {
     image: string,
     infos: string[],
     avaliacoes: number,
-    id: number
+    id: number,
+    cardapio: Plate[]
   ) {
     this.name = name
     this.description = description
@@ -20,7 +22,14 @@ class Restaurants {
     this.infos = infos
     this.avaliacoes = avaliacoes
     this.id = id
+    this.cardapio = cardapio
   }
+}
+
+type Plate = {
+  namePlate: string
+  descriptionPlate: string
+  imagePlate: string
 }
 
 export default Restaurants

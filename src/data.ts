@@ -1,6 +1,7 @@
 import Restaurants from './models/Restaurant'
 import DolceVita from './assets/images/La Dolce Vita Trattoria/capa-restaurante.png'
 import HiokiBanner from './assets/images/Hioki Sushi/capa-restaurante.png'
+import DolcevitaPlate from './assets/images/La Dolce Vita Trattoria/pizza.png'
 
 const restaurant: Restaurants[] = [
   {
@@ -11,6 +12,14 @@ const restaurant: Restaurants[] = [
     image: DolceVita,
     infos: ['Destaque da semana', 'Italiana'],
     name: 'La Dolce Vita Trattoria',
+    cardapio: [
+      {
+        descriptionPlate:
+          'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
+        imagePlate: DolcevitaPlate,
+        namePlate: 'Pizza Marguerita',
+      },
+    ],
   },
   {
     avaliacoes: 4.9,
@@ -20,6 +29,14 @@ const restaurant: Restaurants[] = [
     image: HiokiBanner,
     infos: ['Japonesa'],
     name: 'Hioki Sushi',
+    cardapio: [
+      {
+        descriptionPlate:
+          'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
+        imagePlate: DolcevitaPlate,
+        namePlate: 'Pizza Marguerita',
+      },
+    ],
   },
 ]
 
