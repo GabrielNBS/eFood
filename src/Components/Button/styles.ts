@@ -5,21 +5,21 @@ import { Props } from '.'
 
 export const ButtonLink = styled.button<Props>`
   color: ${(props) =>
-    props.buttonStyle === 'primary'
+    props.custom === 'primary'
       ? cores.branco
-      : props.buttonStyle === 'secundary'
+      : props.custom === 'secundary'
       ? cores.vermelho
       : cores.branco};
   background-color: ${(props) =>
-    props.buttonStyle === 'primary'
+    props.custom === 'primary'
       ? cores.vermelho
-      : props.buttonStyle === 'secundary'
+      : props.custom === 'secundary'
       ? cores.branco
       : cores.vermelho};
   padding: ${(props) =>
-    props.buttonStyle === 'primary'
+    props.custom === 'primary'
       ? '4px 6px'
-      : props.buttonStyle === 'secundary'
+      : props.custom === 'secundary'
       ? '4px 84px'
       : '4px 6px'};
   border: none;

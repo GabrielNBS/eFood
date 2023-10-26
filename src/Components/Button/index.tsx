@@ -5,11 +5,11 @@ export type Props = {
   title: string
   to?: string
   onClick?: () => void
-  buttonStyle?: 'primary' | 'secundary'
+  custom?: 'primary' | 'secundary'
 }
 
-const Button = ({ children, onClick, title, to, buttonStyle }: Props) => (
-  <ButtonLink buttonStyle={buttonStyle} title={title}>
+const Button = ({ children, onClick, title, to, custom }: Props) => (
+  <ButtonLink custom={custom} title={title}>
     {children}
   </ButtonLink>
 )

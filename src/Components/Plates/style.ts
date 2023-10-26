@@ -16,6 +16,7 @@ export const Card = styled.div`
   flex-direction: column;
   align-items: center;
   padding: 8px;
+  justify-content: space-between;
 `
 
 export const Img = styled.img`

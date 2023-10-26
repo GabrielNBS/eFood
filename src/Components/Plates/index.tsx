@@ -14,7 +14,7 @@ const Plates: React.FC<PlatesProps> = ({ cardapio }) => (
         <S.Img src={item.imagePlate} alt={`imagem de uma ${item.namePlate}`} />
         <S.NamePlate>{item.namePlate}</S.NamePlate>
         <S.Description>{item.descriptionPlate}</S.Description>
-        <Button title="Adicionar ao carrinho" buttonStyle="secundary">
+        <Button title="Adicionar ao carrinho" custom="secundary">
           Adicionar ao carrinho
         </Button>
       </S.Card>
