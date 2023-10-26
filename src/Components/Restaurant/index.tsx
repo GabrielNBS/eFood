@@ -43,7 +43,7 @@ const Restaurant = ({
       </Avaliacoes>
     </Restaurante>
     <Paragrafo>{description}</Paragrafo>
-    <Link to="/restaurant">
+    <Link to={`/restaurant/${id}`}>
       <Button title="Clique aqui para saber mais">Saiba mais</Button>
     </Link>
   </Card>

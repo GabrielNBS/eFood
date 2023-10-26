@@ -6,5 +6,6 @@ export const TagContainer = styled.div`
   color: ${cores.branco};
   background-color: ${cores.vermelho};
   font-weight: 700;
-  display: inline-block;
+  display: inline-flex;
+  flex-direction: initial;
 `
