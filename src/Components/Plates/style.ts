@@ -74,6 +74,7 @@ export const ModalContent = styled.div`
   background-color: ${cores.vermelho};
   padding: 32px;
   z-index: 1;
+  position: relative;
 
   img {
     display: block;
@@ -81,6 +82,19 @@ export const ModalContent = styled.div`
     height: 280px;
     margin-right: 24px;
     object-fit: cover;
+  }
+
+  > button {
+    position: absolute;
+    right: 16px;
+    top: 8px;
+    height: 16px;
+    width: 16px;
+
+    img {
+      height: 16px;
+      width: 16px;
+    }
   }
 `
 

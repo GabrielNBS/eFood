@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import * as S from './style'
 import Button from '../Button'
+import close from '../../assets/images/close 1.png'
 
 type PlatesProps = {
   cardapio: MenuItem[]
@@ -41,6 +42,9 @@ const Plates: React.FC<PlatesProps> = ({ cardapio }) => {
       {selectedPlate && (
         <S.ModalContainer className="isVisible">
           <S.ModalContent className="container">
+            <Button type="button" onClick={closeModal} title="Fechar Modal">
+              <img src={close} alt="Fechar modal" />
+            </Button>
             <img src={selectedPlate.foto} alt={selectedPlate.nome} />
             <S.ModalInfos>
               <h2>{selectedPlate.nome}</h2>
@@ -48,9 +52,8 @@ const Plates: React.FC<PlatesProps> = ({ cardapio }) => {
                 {selectedPlate.descricao}
                 <span>Serve: de {selectedPlate.porcao}</span>
               </p>
-
-              <Button type="button" onClick={closeModal} title="Fechar Modal">
-                Fechar Modal
+              <Button type="button" title="Adicionar ao carrinho">
+                Adicionar ao carrinho - R${selectedPlate.preco}
               </Button>
             </S.ModalInfos>
           </S.ModalContent>
