@@ -16,6 +16,12 @@ export const Card = styled.div`
   ${ButtonLink} {
     margin: 0 0 8px 8px;
   }
+
+  > img {
+    object-fit: cover;
+    width: 100%;
+    height: 217px;
+  }
 `
 
 export const Infos = styled.div`

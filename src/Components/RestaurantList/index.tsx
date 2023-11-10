@@ -1,9 +1,8 @@
-import Restaurants from '../../models/Restaurant'
 import Product from '../Restaurant'
 import { List, ProductSection } from './styles'
 
 type Props = {
-  restaurants: Restaurants[]
+  restaurants: Restaurant[]
 }
 
 const RestaurantList = ({ restaurants }: Props) => (
@@ -11,12 +10,12 @@ const RestaurantList = ({ restaurants }: Props) => (
     <List>
       {restaurants.map((restaurant) => (
         <Product
-          avaliacoes={restaurant.avaliacoes}
-          description={restaurant.description}
+          avaliacoes={restaurant.avaliacao}
+          description={restaurant.descricao}
           id={restaurant.id}
-          image={restaurant.image}
-          infos={restaurant.infos}
-          name={restaurant.name}
+          image={restaurant.capa}
+          infos={restaurant.tipo}
+          name={restaurant.titulo}
           key={restaurant.id}
         />
       ))}
