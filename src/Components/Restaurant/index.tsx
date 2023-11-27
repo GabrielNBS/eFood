@@ -1,4 +1,3 @@
-import Tag from '../Tag'
 import estrela from '../../assets/images/estrela.svg'
 import {
   Card,
