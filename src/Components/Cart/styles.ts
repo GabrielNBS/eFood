@@ -52,7 +52,7 @@ export const CartItem = styled.li`
     font-weight: 900;
   }
 
-  img {
+  > img {
     margin-right: 8px;
     object-fit: cover;
     width: 80px;
@@ -70,6 +70,7 @@ export const CartItem = styled.li`
     right: 16px;
     height: 8px;
     width: 8px;
+    cursor: pointer;
   }
 `
 

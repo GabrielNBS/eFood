@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { close } from '../../store/reducers/cart'
+import { close, remove } from '../../store/reducers/cart'
 import Button from '../Button'
 import { Overlay, CartContainer, Sidebar, CartItem, Prices } from './styles'
 import lixeira from '../../assets/images/lixeira.png'
@@ -13,6 +13,19 @@ const Cart: React.FC = () => {
 
   const closeCart = () => {
     dispatch(close())
+  }
+
+  const getTotalPrice = () => {
+    return items.reduce((acumulador, valorAtual) => {
+      if (valorAtual && 'preco' in valorAtual) {
+        return (acumulador += valorAtual.preco)
+      }
+      return acumulador
+    }, 0)
+  }
+
+  const removeItem = (id: number) => {
+    dispatch(remove(id))
   }
 
   return (
@@ -30,7 +43,7 @@ const Cart: React.FC = () => {
                       <h2>{item.nome}</h2>
                       <span>{formatPrice(item.preco)}</span>
                     </div>
-                    <button type="button">
+                    <button onClick={() => removeItem(item.id)} type="button">
                       <img src={lixeira} alt="Icone de lixeira" />
                     </button>
                   </>
@@ -41,7 +54,7 @@ const Cart: React.FC = () => {
         </ul>
         <Prices>
           <p>Valor total</p>
-          <span>R$ 182,70</span>
+          <span>{formatPrice(getTotalPrice())}</span>
         </Prices>
         <Button custom="secundary" title="Continuar para a entrega">
           Continuar com a entrega

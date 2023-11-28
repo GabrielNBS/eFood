@@ -4,6 +4,7 @@ import * as S from './style'
 import Button from '../Button'
 import close from '../../assets/images/close 1.png'
 import { add, open } from '../../store/reducers/cart'
+import { formatPrice } from '../../utils'
 
 type PlatesProps = {
   cardapio: MenuItem[]
@@ -66,7 +67,7 @@ const Plates: React.FC<PlatesProps> = ({ cardapio }) => {
                 type="button"
                 title="Adicionar ao carrinho"
               >
-                Adicionar ao carrinho - R${selectedPlate.preco}
+                Adicionar ao carrinho - {formatPrice(selectedPlate.preco)}
               </Button>
             </S.ModalInfos>
           </S.ModalContent>
