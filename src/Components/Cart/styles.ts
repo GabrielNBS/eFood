@@ -19,6 +19,10 @@ export const CartContainer = styled.div`
   display: none;
   justify-content: flex-end;
   z-index: 1;
+
+  &.is-open {
+    display: flex;
+  }
 `
 
 export const Sidebar = styled.aside`
@@ -50,6 +54,9 @@ export const CartItem = styled.li`
 
   img {
     margin-right: 8px;
+    object-fit: cover;
+    width: 80px;
+    height: 80px;
   }
 
   span {

@@ -14,6 +14,6 @@ const api = createApi({
   }),
 })
 
-const { useGetRestaurantsQuery, useGetTypeQuery } = api
+export const { useGetRestaurantsQuery, useGetTypeQuery } = api
 
 export default api

@@ -1,7 +1,9 @@
+import { useDispatch } from 'react-redux'
 import React, { useState } from 'react'
 import * as S from './style'
 import Button from '../Button'
 import close from '../../assets/images/close 1.png'
+import { add, open } from '../../store/reducers/cart'
 
 type PlatesProps = {
   cardapio: MenuItem[]
@@ -17,6 +19,13 @@ const Plates: React.FC<PlatesProps> = ({ cardapio }) => {
 
   const closeModal = () => {
     setSelectedPlate(null)
+  }
+
+  const dispatch = useDispatch()
+
+  const addToCart = () => {
+    dispatch(add(selectedPlate))
+    dispatch(open())
   }
 
   return (
@@ -52,7 +61,11 @@ const Plates: React.FC<PlatesProps> = ({ cardapio }) => {
                 {selectedPlate.descricao}
                 <span>Serve: de {selectedPlate.porcao}</span>
               </p>
-              <Button type="button" title="Adicionar ao carrinho">
+              <Button
+                onClick={addToCart}
+                type="button"
+                title="Adicionar ao carrinho"
+              >
                 Adicionar ao carrinho - R${selectedPlate.preco}
               </Button>
             </S.ModalInfos>

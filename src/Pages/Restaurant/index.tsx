@@ -1,32 +1,25 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { useParams } from 'react-router-dom'
+import { useGetTypeQuery } from '../../services/api'
 import Banner from '../../Components/Banner'
 import Header from '../../Components/Header'
 import Plates from '../../Components/Plates'
 
 const Restaurant: React.FC = () => {
-  const { id } = useParams()
-  const [selectedRestaurant, setSelectedRestaurant] =
-    useState<Restaurant | null>(null)
+  const { id } = useParams<{ id: string }>()
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(
-          `https://fake-api-tau.vercel.app/api/efood/restaurantes/${id}`
-        )
-        const data = await response.json()
-        setSelectedRestaurant(data)
-      } catch (error) {
-        console.error('Erro ao buscar dados do restaurante:', error)
-      }
-    }
+  const { data: selectedRestaurant, isLoading } = useGetTypeQuery(id!)
 
-    fetchData()
-  }, [id])
+  if (!id) {
+    return <div>ID do restaurante não fornecido</div>
+  }
+
+  if (isLoading) {
+    return <div>Carregando...</div>
+  }
 
   if (!selectedRestaurant) {
-    return <div>Carregando...</div>
+    return <div>Restaurante não encontrado</div>
   }
 
   const { titulo, tipo, capa, cardapio } = selectedRestaurant

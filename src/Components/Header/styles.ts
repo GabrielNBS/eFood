@@ -25,6 +25,7 @@ export const HeaderSection = styled.section`
       font-size: 18px;
       font-weight: 900;
       color: ${cores.vermelho};
+      cursor: pointer;
     }
   }
 `
