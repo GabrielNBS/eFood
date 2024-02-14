@@ -51,14 +51,14 @@ const Cart: React.FC = () => {
               </CartItem>
             ) : null
           )}
+          <Prices>
+            <p>Valor total</p>
+            <span>{formatPrice(getTotalPrice())}</span>
+          </Prices>
+          <Button custom="secundary" title="Continuar para a entrega">
+            Continuar com a entrega
+          </Button>
         </ul>
-        <Prices>
-          <p>Valor total</p>
-          <span>{formatPrice(getTotalPrice())}</span>
-        </Prices>
-        <Button custom="secundary" title="Continuar para a entrega">
-          Continuar com a entrega
-        </Button>
       </Sidebar>
     </CartContainer>
   )
