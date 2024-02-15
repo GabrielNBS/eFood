@@ -6,6 +6,7 @@ import { Overlay, CartContainer, Sidebar, CartItem, Prices } from './styles'
 import lixeira from '../../assets/images/lixeira.png'
 import { RootReducer } from '../../store'
 import { formatPrice } from '../../utils'
+import Checkout from '../Checkout'
 
 const Cart: React.FC = () => {
   const { isOpen, items } = useSelector((state: RootReducer) => state.cart)
@@ -32,7 +33,7 @@ const Cart: React.FC = () => {
     <CartContainer className={isOpen ? 'is-open' : ''}>
       <Overlay onClick={closeCart} />
       <Sidebar>
-        <ul>
+        {/* <ul>
           {items.map((item: Restaurant | MenuItem | null) =>
             item ? (
               <CartItem key={item.id}>
@@ -58,7 +59,8 @@ const Cart: React.FC = () => {
           <Button custom="secundary" title="Continuar para a entrega">
             Continuar com a entrega
           </Button>
-        </ul>
+        </ul> */}
+        <Checkout title="Entrega" />
       </Sidebar>
     </CartContainer>
   )
