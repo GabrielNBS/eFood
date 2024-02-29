@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import { cores } from '../../styles'
 
-type Props = {
+export type Props = {
   maxWidth?: string
 }
 
@@ -16,7 +16,6 @@ export const CheckoutContainer = styled.div`
     }
   }
 `
-
 export const InputGroup = styled.div<Props>`
   max-width: ${(props) => props.maxWidth || 'auto'};
   width: 100%;
@@ -46,6 +45,7 @@ export const HalfWidth = styled.div`
     }
   }
 `
+
 export const Row = styled.div<Props>`
   display: flex;
   justify-content: space-between;
