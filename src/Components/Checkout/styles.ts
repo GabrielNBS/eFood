@@ -31,6 +31,7 @@ export const InputGroup = styled.div<Props>`
     height: 32px;
     margin-top: 8px;
     width: 100%;
+    padding: 0 8px;
   }
 `
 

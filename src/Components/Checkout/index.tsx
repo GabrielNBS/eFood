@@ -15,6 +15,11 @@ const Checkout: React.FC<CheckoutProps> = ({ title }) => {
       cep: '',
       deliveryAddress: '',
       complement: '',
+      cardName: '',
+      cardNumber: '',
+      cardSecurityNumber: '',
+      monthOfMaturity: '',
+      yearOfMaturity: '',
     },
     onSubmit: (values) => {
       console.log(values)
@@ -23,7 +28,7 @@ const Checkout: React.FC<CheckoutProps> = ({ title }) => {
 
   return (
     <S.CheckoutContainer>
-      <form>
+      <form onSubmit={form.handleSubmit}>
         <h2>{title}</h2>
         <S.InputGroup>
           <label htmlFor="fullName">Quem ira receber</label>
@@ -37,28 +42,62 @@ const Checkout: React.FC<CheckoutProps> = ({ title }) => {
         </S.InputGroup>
         <S.InputGroup>
           <label htmlFor="address">Endereço</label>
-          <input type="text" id="address" />
+          <input
+            type="text"
+            id="address"
+            name="address"
+            value={form.values.address}
+            onChange={form.handleChange}
+          />
         </S.InputGroup>
         <S.InputGroup>
           <label htmlFor="city">Cidade</label>
-          <input type="text" id="city" />
+          <input
+            type="text"
+            id="city"
+            name="city"
+            value={form.values.city}
+            onChange={form.handleChange}
+          />
         </S.InputGroup>
         <S.HalfWidth>
           <S.InputGroup>
             <label htmlFor="cep">CEP</label>
-            <input type="number" id="cep" />
+            <input
+              type="text"
+              id="cep"
+              name="cep"
+              value={form.values.cep}
+              onChange={form.handleChange}
+            />
           </S.InputGroup>
           <S.InputGroup>
             <label htmlFor="deliveryAddress">Numero</label>
-            <input type="number" id="deliveryAddress" />
+            <input
+              type="number"
+              id="deliveryAddress"
+              name="deliveryAddress"
+              value={form.values.deliveryAddress}
+              onChange={form.handleChange}
+            />
           </S.InputGroup>
         </S.HalfWidth>
         <S.InputGroup>
           <label htmlFor="complement">Complemento (opcional)</label>
-          <input type="text" id="complement" />
+          <input
+            type="text"
+            id="complement"
+            name="complement"
+            value={form.values.complement}
+            onChange={form.handleChange}
+          />
         </S.InputGroup>
         <S.ButtonGroup>
-          <Button custom="secundary" title="Continuar com o pagamento">
+          <Button
+            type="submit"
+            custom="secundary"
+            title="Continuar com o pagamento"
+          >
             Continuar com o pagamento
           </Button>
           <Button custom="secundary" title="Voltar para o carrinho">
@@ -66,44 +105,74 @@ const Checkout: React.FC<CheckoutProps> = ({ title }) => {
           </Button>
         </S.ButtonGroup>
       </form>
-      <form>
+      {/* <form onSubmit={form.handleSubmit}>
         <h2>{title}</h2>
         <S.Row>
           <S.InputGroup>
             <label htmlFor="cardName">Nome do cartão</label>
-            <input type="text" id="cardName" />
+            <input
+              type="text"
+              id="cardName"
+              name="cardName"
+              value={form.values.cardName}
+              onChange={form.handleChange}
+            />
           </S.InputGroup>
         </S.Row>
         <S.Row>
           <S.InputGroup maxWidth="228px">
             <label htmlFor="cardNumber">Numero do cartão</label>
-            <input type="number" id="cardNumber" />
+            <input
+              type="number"
+              id="cardNumber"
+              name="cardNumber"
+              value={form.values.cardNumber}
+              onChange={form.handleChange}
+            />
           </S.InputGroup>
           <S.InputGroup maxWidth="87px">
             <label htmlFor="cardSecurityNumber">CVV</label>
-            <input type="number" id="cardSecurityNumber" />
+            <input
+              type="number"
+              id="cardSecurityNumber"
+              name="cardSecurityNumber"
+              value={form.values.cardSecurityNumber}
+              onChange={form.handleChange}
+            />
           </S.InputGroup>
         </S.Row>
         <S.Row>
           <S.InputGroup maxWidth="155px">
             <label htmlFor="monthOfMaturity">Mes de vencimento</label>
-            <input type="number" id="monthOfMaturity" />
+            <input
+              type="number"
+              id="monthOfMaturity"
+              name="monthOfMaturity"
+              value={form.values.monthOfMaturity}
+              onChange={form.handleChange}
+            />
           </S.InputGroup>
           <S.InputGroup maxWidth="155px">
             <label htmlFor="yearOfMaturity">Ano de vencimento</label>
-            <input type="number" id="yearOfMaturity" />
+            <input
+              type="number"
+              id="yearOfMaturity"
+              name="yearOfMaturity"
+              value={form.values.yearOfMaturity}
+              onChange={form.handleChange}
+            />
           </S.InputGroup>
         </S.Row>
         <S.ButtonGroup>
-          <Button title="Finalizar Pagamento" custom="secundary">
+          <Button type="submit" title="Finalizar Pagamento" custom="secundary">
             Finalizar Pagamento
           </Button>
           <Button title="Voltar para a edição de endereço" custom="secundary">
             Voltar para a edição de endereço
           </Button>
         </S.ButtonGroup>
-      </form>
-      <S.OrderContainer>
+      </form> */}
+      {/* <S.OrderContainer>
         <h2>Pedido realizado - ORDER_ID</h2>
         <div>
           <p>
@@ -124,10 +193,10 @@ const Checkout: React.FC<CheckoutProps> = ({ title }) => {
             gastronômica. Bom apetite!
           </p>
         </div>
-        <Button custom="secundary" title="Concluir">
+        <Button type="submit" custom="secundary" title="Concluir">
           Concluir
         </Button>
-      </S.OrderContainer>
+      </S.OrderContainer> */}
     </S.CheckoutContainer>
   )
 }
