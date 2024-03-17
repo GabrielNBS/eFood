@@ -1,4 +1,5 @@
 import { useFormik } from 'formik'
+import * as Yup from 'yup'
 import Button from '../Button'
 import * as S from './styles'
 
@@ -21,10 +22,51 @@ const Checkout: React.FC<CheckoutProps> = ({ title }) => {
       monthOfMaturity: '',
       yearOfMaturity: '',
     },
+    validationSchema: Yup.object({
+      fullName: Yup.string()
+        .min(5, 'O nome precisa ter pelo menos 5 caracteres')
+        .required('O campo é obrigatório'),
+      address: Yup.string()
+        .min(5, 'Endereço inválido')
+        .required('O campo é obrigatório'),
+      city: Yup.string()
+        .min(3, 'Local inválido')
+        .required('O campo é obrigatório'),
+      cep: Yup.string()
+        .min(8, 'O campo precisa ter 6 caracteres')
+        .max(9, 'O campo precisa ter 6 caracteres')
+        .required('O campo é obrigatório'),
+      deliveryAddress: Yup.string()
+        .min(1, 'Endereço inválido')
+        .required('O campo é obrigatório'),
+      cardName: Yup.string()
+        .min(5, 'O nome precisa ter pelo menos 5 caracteres')
+        .required('O campo é obrigatório'),
+      cardNumber: Yup.string()
+        .min(16, 'Número de cartão inválido')
+        .required('O campo é obrigatório'),
+      cardSecurityNumber: Yup.string()
+        .min(3)
+        .max(3)
+        .required('O campo é obrigatório'),
+      monthOfMaturity: Yup.string()
+        .min(3)
+        .min(3)
+        .required('O campo é obrigatório'),
+      email: Yup.string().min(3).min(3).required('O campo é obrigatório'),
+    }),
     onSubmit: (values) => {
       console.log(values)
     },
   })
+
+  const getErrorMessage = (fildName: string, message?: string) => {
+    const isTouched = fildName in form.touched
+    const isInvalid = fildName in form.errors
+
+    if (isTouched && isInvalid) return message
+    return ''
+  }
 
   return (
     <S.CheckoutContainer>
@@ -38,7 +80,9 @@ const Checkout: React.FC<CheckoutProps> = ({ title }) => {
             name="fullName"
             value={form.values.fullName}
             onChange={form.handleChange}
+            onBlur={form.handleBlur}
           />
+          <small>{getErrorMessage('fullName', form.errors.fullName)}</small>
         </S.InputGroup>
         <S.InputGroup>
           <label htmlFor="address">Endereço</label>
@@ -48,7 +92,9 @@ const Checkout: React.FC<CheckoutProps> = ({ title }) => {
             name="address"
             value={form.values.address}
             onChange={form.handleChange}
+            onBlur={form.handleBlur}
           />
+          <small>{getErrorMessage('address', form.errors.address)}</small>
         </S.InputGroup>
         <S.InputGroup>
           <label htmlFor="city">Cidade</label>
@@ -58,7 +104,9 @@ const Checkout: React.FC<CheckoutProps> = ({ title }) => {
             name="city"
             value={form.values.city}
             onChange={form.handleChange}
+            onBlur={form.handleBlur}
           />
+          <small>{getErrorMessage('city', form.errors.city)}</small>
         </S.InputGroup>
         <S.HalfWidth>
           <S.InputGroup>
@@ -69,7 +117,9 @@ const Checkout: React.FC<CheckoutProps> = ({ title }) => {
               name="cep"
               value={form.values.cep}
               onChange={form.handleChange}
+              onBlur={form.handleBlur}
             />
+            <small>{getErrorMessage('cep', form.errors.cep)}</small>
           </S.InputGroup>
           <S.InputGroup>
             <label htmlFor="deliveryAddress">Numero</label>
@@ -79,7 +129,11 @@ const Checkout: React.FC<CheckoutProps> = ({ title }) => {
               name="deliveryAddress"
               value={form.values.deliveryAddress}
               onChange={form.handleChange}
+              onBlur={form.handleBlur}
             />
+            <small>
+              {getErrorMessage('deliveryAddress', form.errors.deliveryAddress)}
+            </small>
           </S.InputGroup>
         </S.HalfWidth>
         <S.InputGroup>
@@ -90,7 +144,9 @@ const Checkout: React.FC<CheckoutProps> = ({ title }) => {
             name="complement"
             value={form.values.complement}
             onChange={form.handleChange}
+            onBlur={form.handleBlur}
           />
+          <small>{getErrorMessage('complement', form.errors.complement)}</small>
         </S.InputGroup>
         <S.ButtonGroup>
           <Button
@@ -105,7 +161,7 @@ const Checkout: React.FC<CheckoutProps> = ({ title }) => {
           </Button>
         </S.ButtonGroup>
       </form>
-      {/* <form onSubmit={form.handleSubmit}>
+      <form onSubmit={form.handleSubmit}>
         <h2>{title}</h2>
         <S.Row>
           <S.InputGroup>
@@ -116,7 +172,9 @@ const Checkout: React.FC<CheckoutProps> = ({ title }) => {
               name="cardName"
               value={form.values.cardName}
               onChange={form.handleChange}
+              onBlur={form.handleBlur}
             />
+            <small>{getErrorMessage('cardName', form.errors.cardName)}</small>
           </S.InputGroup>
         </S.Row>
         <S.Row>
@@ -128,7 +186,9 @@ const Checkout: React.FC<CheckoutProps> = ({ title }) => {
               name="cardNumber"
               value={form.values.cardNumber}
               onChange={form.handleChange}
+              onBlur={form.handleBlur}
             />
+            <small>{getErrorMessage('cardNumber', form.errors.fullName)}</small>
           </S.InputGroup>
           <S.InputGroup maxWidth="87px">
             <label htmlFor="cardSecurityNumber">CVV</label>
@@ -138,7 +198,14 @@ const Checkout: React.FC<CheckoutProps> = ({ title }) => {
               name="cardSecurityNumber"
               value={form.values.cardSecurityNumber}
               onChange={form.handleChange}
+              onBlur={form.handleBlur}
             />
+            <small>
+              {getErrorMessage(
+                'cardSecurityNumber',
+                form.errors.cardSecurityNumber
+              )}
+            </small>
           </S.InputGroup>
         </S.Row>
         <S.Row>
@@ -150,7 +217,11 @@ const Checkout: React.FC<CheckoutProps> = ({ title }) => {
               name="monthOfMaturity"
               value={form.values.monthOfMaturity}
               onChange={form.handleChange}
+              onBlur={form.handleBlur}
             />
+            <small>
+              {getErrorMessage('monthOfMaturity', form.errors.monthOfMaturity)}
+            </small>
           </S.InputGroup>
           <S.InputGroup maxWidth="155px">
             <label htmlFor="yearOfMaturity">Ano de vencimento</label>
@@ -160,7 +231,11 @@ const Checkout: React.FC<CheckoutProps> = ({ title }) => {
               name="yearOfMaturity"
               value={form.values.yearOfMaturity}
               onChange={form.handleChange}
+              onBlur={form.handleBlur}
             />
+            <small>
+              {getErrorMessage('yearOfMaturity', form.errors.yearOfMaturity)}
+            </small>
           </S.InputGroup>
         </S.Row>
         <S.ButtonGroup>
@@ -171,8 +246,8 @@ const Checkout: React.FC<CheckoutProps> = ({ title }) => {
             Voltar para a edição de endereço
           </Button>
         </S.ButtonGroup>
-      </form> */}
-      {/* <S.OrderContainer>
+      </form>
+      <S.OrderContainer>
         <h2>Pedido realizado - ORDER_ID</h2>
         <div>
           <p>
@@ -196,7 +271,7 @@ const Checkout: React.FC<CheckoutProps> = ({ title }) => {
         <Button type="submit" custom="secundary" title="Concluir">
           Concluir
         </Button>
-      </S.OrderContainer> */}
+      </S.OrderContainer>
     </S.CheckoutContainer>
   )
 }
