@@ -5,6 +5,7 @@ export type Props = {
   title: string
   to?: string
   onClick?: () => void
+  onSubmit?: () => void
   custom?: 'primary' | 'secundary'
   type?: string
 }

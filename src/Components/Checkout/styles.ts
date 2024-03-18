@@ -27,11 +27,15 @@ export const InputGroup = styled.div<Props>`
 
   input {
     display: block;
-    border: none;
+    border: transparent;
     height: 32px;
     margin-top: 8px;
     width: 100%;
     padding: 0 8px;
+
+    &.error {
+      border: 3px solid ${cores.preto};
+    }
   }
 `
 

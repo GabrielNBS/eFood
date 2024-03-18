@@ -70,7 +70,7 @@ const Cart: React.FC = () => {
         ) : (
           items.length === 0 && (
             <div>
-              <h2>Seu carrinho está vazio</h2>
+              <h2>Adicione um item ao carrinho</h2>
             </div>
           )
         )}

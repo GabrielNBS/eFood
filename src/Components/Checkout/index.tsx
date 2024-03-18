@@ -1,7 +1,16 @@
 import { useState } from 'react'
+import { useSelector } from 'react-redux'
 import { useFormik } from 'formik'
+import { RootReducer } from '../../store'
+import { Navigate } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { close } from '../../store/reducers/cart'
+import InputMask from 'react-input-mask'
+
 import * as Yup from 'yup'
 import Button from '../Button'
+
 import * as S from './styles'
 import { usePurchaseMutation } from '../../services/api'
 
@@ -12,21 +21,27 @@ export type CheckoutProps = {
 const Checkout: React.FC<CheckoutProps> = ({ setPayment }) => {
   const [purchase, { isSuccess, data }] = usePurchaseMutation()
   const [userAddress, setUserAddress] = useState(false)
+  const { items } = useSelector((state: RootReducer) => state.cart)
+  const navigate = useNavigate()
+  const dispatch = useDispatch()
 
   const form = useFormik({
+    // valores iniciais do formulário
     initialValues: {
       fullName: '',
       address: '',
       city: '',
       cep: '',
-      deliveryAddress: '',
+      number: '',
       complement: '',
-      cardName: '',
+      cardOwner: '',
       cardNumber: '',
       cardSecurityNumber: '',
       monthOfMaturity: '',
       yearOfMaturity: '',
     },
+
+    // validações do formulário
     validationSchema: Yup.object({
       fullName: Yup.string()
         .min(5, 'O nome precisa ter pelo menos 5 caracteres')
@@ -41,10 +56,10 @@ const Checkout: React.FC<CheckoutProps> = ({ setPayment }) => {
         .min(8, 'O campo precisa ter 6 caracteres')
         .max(9, 'O campo precisa ter 6 caracteres')
         .required('O campo é obrigatório'),
-      deliveryAddress: Yup.string()
+      number: Yup.string()
         .min(1, 'Endereço inválido')
         .required('O campo é obrigatório'),
-      cardName: Yup.string()
+      cardOwner: Yup.string()
         .min(5, 'O nome precisa ter pelo menos 5 caracteres')
         .required('O campo é obrigatório'),
       cardNumber: Yup.string()
@@ -55,10 +70,16 @@ const Checkout: React.FC<CheckoutProps> = ({ setPayment }) => {
         .max(3)
         .required('O campo é obrigatório'),
       monthOfMaturity: Yup.string()
-        .min(3)
-        .min(3)
+        .min(2)
+        .min(2)
+        .required('O campo é obrigatório'),
+      yearOfMaturity: Yup.string()
+        .min(2)
+        .max(2)
         .required('O campo é obrigatório'),
     }),
+
+    // Dados envolvidos pelo formulário
     onSubmit: (values) => {
       purchase({
         delivery: {
@@ -67,13 +88,13 @@ const Checkout: React.FC<CheckoutProps> = ({ setPayment }) => {
             description: values.address,
             city: values.city,
             zipCode: values.cep,
-            number: Number(values.deliveryAddress),
+            number: Number(values.number),
             complement: values.complement,
           },
         },
         payment: {
           card: {
-            name: values.cardName,
+            name: values.cardOwner,
             number: values.cardNumber,
             code: Number(values.cardSecurityNumber),
             expires: {
@@ -82,41 +103,56 @@ const Checkout: React.FC<CheckoutProps> = ({ setPayment }) => {
             },
           },
         },
-        product: [
-          {
-            id: 1,
-            price: 100,
-          },
-        ],
+        products: items
+          .filter((item): item is MenuItem => item !== null && 'preco' in item)
+          .map((item) => ({
+            id: item.id,
+            price: (item as MenuItem).preco as number,
+          })),
       })
     },
   })
 
+  // verifica se os campos do form de entrega foram preenchidos corretamente, e se foram tocados para so apos a confirmação tornar o formulário valido
   const formAddressIsValid = () => {
     const isValid =
       !form.errors.fullName &&
       !form.errors.address &&
       !form.errors.city &&
       !form.errors.cep &&
-      !form.errors.deliveryAddress &&
-      form.touched.address
+      !form.errors.number &&
+      form.touched.fullName
 
     if (isValid) {
       setUserAddress(true)
-      return alert('Por favor, preencha todos os campos')
     }
   }
 
-  const getErrorMessage = (fildName: string, message?: string) => {
+  const checkInputHasError = (fildName: string) => {
     const isTouched = fildName in form.touched
     const isInvalid = fildName in form.errors
+    const hasError = isTouched && isInvalid
+    return hasError
+  }
 
-    if (isTouched && isInvalid) return message
-    return ''
+  const confirmPayment = () => {
+    form.handleSubmit()
+  }
+
+  if (items.length === 0) {
+    return <Navigate to={'/'} />
+  }
+
+  // Procurar maneira mais efetiva para fazer o reset do formulário sem fazer reset da pagina
+  const finishPayment = () => {
+    dispatch(close())
+    navigate('/')
+    window.location.reload()
   }
 
   return (
     <S.CheckoutContainer>
+      {/* renderiza o formulário no caso dos dados de entrega e cartão tiverem o valor: false */}
       {!userAddress && !isSuccess && (
         <form onSubmit={form.handleSubmit}>
           <h2>Entrega</h2>
@@ -129,8 +165,8 @@ const Checkout: React.FC<CheckoutProps> = ({ setPayment }) => {
               value={form.values.fullName}
               onChange={form.handleChange}
               onBlur={form.handleBlur}
+              className={checkInputHasError('fullName') ? 'error' : ''}
             />
-            <small>{getErrorMessage('fullName', form.errors.fullName)}</small>
           </S.InputGroup>
           <S.InputGroup>
             <label htmlFor="address">Endereço</label>
@@ -141,8 +177,8 @@ const Checkout: React.FC<CheckoutProps> = ({ setPayment }) => {
               value={form.values.address}
               onChange={form.handleChange}
               onBlur={form.handleBlur}
+              className={checkInputHasError('address') ? 'error' : ''}
             />
-            <small>{getErrorMessage('address', form.errors.address)}</small>
           </S.InputGroup>
           <S.InputGroup>
             <label htmlFor="city">Cidade</label>
@@ -153,38 +189,34 @@ const Checkout: React.FC<CheckoutProps> = ({ setPayment }) => {
               value={form.values.city}
               onChange={form.handleChange}
               onBlur={form.handleBlur}
+              className={checkInputHasError('city') ? 'error' : ''}
             />
-            <small>{getErrorMessage('city', form.errors.city)}</small>
           </S.InputGroup>
           <S.HalfWidth>
             <S.InputGroup>
               <label htmlFor="cep">CEP</label>
-              <input
+              <InputMask
                 type="text"
                 id="cep"
                 name="cep"
                 value={form.values.cep}
                 onChange={form.handleChange}
                 onBlur={form.handleBlur}
+                className={checkInputHasError('cep') ? 'error' : ''}
+                mask="99999-999"
               />
-              <small>{getErrorMessage('cep', form.errors.cep)}</small>
             </S.InputGroup>
             <S.InputGroup>
-              <label htmlFor="deliveryAddress">Numero</label>
+              <label htmlFor="number">Numero</label>
               <input
                 type="number"
-                id="deliveryAddress"
-                name="deliveryAddress"
-                value={form.values.deliveryAddress}
+                id="number"
+                name="number"
+                value={form.values.number}
                 onChange={form.handleChange}
                 onBlur={form.handleBlur}
+                className={checkInputHasError('number') ? 'error' : ''}
               />
-              <small>
-                {getErrorMessage(
-                  'deliveryAddress',
-                  form.errors.deliveryAddress
-                )}
-              </small>
             </S.InputGroup>
           </S.HalfWidth>
           <S.InputGroup>
@@ -196,16 +228,15 @@ const Checkout: React.FC<CheckoutProps> = ({ setPayment }) => {
               value={form.values.complement}
               onChange={form.handleChange}
               onBlur={form.handleBlur}
+              className={checkInputHasError('complement') ? 'error' : ''}
             />
-            <small>
-              {getErrorMessage('complement', form.errors.complement)}
-            </small>
           </S.InputGroup>
           <S.ButtonGroup>
             <Button
               onClick={() => formAddressIsValid()}
               custom="secundary"
               title="Continuar com o pagamento"
+              type="button"
             >
               Continuar com o pagamento
             </Button>
@@ -213,112 +244,115 @@ const Checkout: React.FC<CheckoutProps> = ({ setPayment }) => {
               onClick={() => setPayment(false)}
               custom="secundary"
               title="Voltar para o carrinho"
+              type="button"
             >
               Voltar para o carrinho
             </Button>
           </S.ButtonGroup>
         </form>
       )}
+
+      {/* renderiza o formulário no caso dos dados de entrega tiverem valor: true e os dados do cartão tiverem valor:false */}
       {userAddress && !isSuccess && (
         <form onSubmit={form.handleSubmit}>
           <h2>Teste</h2>
           <S.Row>
             <S.InputGroup>
-              <label htmlFor="cardName">Nome do cartão</label>
+              <label htmlFor="cardOwner">Nome do cartão</label>
               <input
                 type="text"
-                id="cardName"
-                name="cardName"
-                value={form.values.cardName}
+                id="cardOwner"
+                name="cardOwner"
+                value={form.values.cardOwner}
                 onChange={form.handleChange}
                 onBlur={form.handleBlur}
+                className={checkInputHasError('cardOwner') ? 'error' : ''}
               />
-              <small>{getErrorMessage('cardName', form.errors.cardName)}</small>
             </S.InputGroup>
           </S.Row>
           <S.Row>
             <S.InputGroup maxWidth="228px">
               <label htmlFor="cardNumber">Numero do cartão</label>
-              <input
-                type="number"
+              <InputMask
+                type="text"
                 id="cardNumber"
                 name="cardNumber"
                 value={form.values.cardNumber}
                 onChange={form.handleChange}
                 onBlur={form.handleBlur}
+                className={checkInputHasError('cardNumber') ? 'error' : ''}
+                mask="9999-9999-9999-9999"
               />
-              <small>
-                {getErrorMessage('cardNumber', form.errors.fullName)}
-              </small>
             </S.InputGroup>
             <S.InputGroup maxWidth="87px">
               <label htmlFor="cardSecurityNumber">CVV</label>
-              <input
-                type="number"
+              <InputMask
+                type="text"
                 id="cardSecurityNumber"
                 name="cardSecurityNumber"
                 value={form.values.cardSecurityNumber}
                 onChange={form.handleChange}
                 onBlur={form.handleBlur}
+                className={
+                  checkInputHasError('cardSecutiryNumber') ? 'error' : ''
+                }
+                mask="999"
               />
-              <small>
-                {getErrorMessage(
-                  'cardSecurityNumber',
-                  form.errors.cardSecurityNumber
-                )}
-              </small>
             </S.InputGroup>
           </S.Row>
           <S.Row>
             <S.InputGroup maxWidth="155px">
               <label htmlFor="monthOfMaturity">Mes de vencimento</label>
-              <input
-                type="number"
+              <InputMask
+                type="text"
                 id="monthOfMaturity"
                 name="monthOfMaturity"
                 value={form.values.monthOfMaturity}
                 onChange={form.handleChange}
                 onBlur={form.handleBlur}
+                className={checkInputHasError('monthOfMaturity') ? 'error' : ''}
+                mask="99"
               />
-              <small>
-                {getErrorMessage(
-                  'monthOfMaturity',
-                  form.errors.monthOfMaturity
-                )}
-              </small>
             </S.InputGroup>
             <S.InputGroup maxWidth="155px">
               <label htmlFor="yearOfMaturity">Ano de vencimento</label>
-              <input
-                type="number"
+              <InputMask
+                type="text"
                 id="yearOfMaturity"
                 name="yearOfMaturity"
                 value={form.values.yearOfMaturity}
                 onChange={form.handleChange}
                 onBlur={form.handleBlur}
+                className={checkInputHasError('yearOfMaturity') ? 'error' : ''}
+                mask="99"
               />
-              <small>
-                {getErrorMessage('yearOfMaturity', form.errors.yearOfMaturity)}
-              </small>
             </S.InputGroup>
           </S.Row>
           <S.ButtonGroup>
             <Button
-              type="submit"
+              type="button"
+              onClick={confirmPayment}
               title="Finalizar Pagamento"
               custom="secundary"
             >
               Finalizar Pagamento
             </Button>
-            <Button title="Voltar para a edição de endereço" custom="secundary">
+            <Button
+              type="button"
+              title="Voltar para a edição de endereço"
+              custom="secundary"
+              onClick={() => setUserAddress(false)}
+            >
               Voltar para a edição de endereço
             </Button>
           </S.ButtonGroup>
         </form>
       )}
+
+      {/* renderiza o formulário no caso dos dados de entrega tiverem valor: true e os dados do cartão tiverem valor:true */}
       {isSuccess && data && userAddress && (
         <S.OrderContainer>
-          <h2>Pedido realizado - ORDER_ID</h2>
+          <h2>Pedido realizado - {data.orderId}</h2>
           <div>
             <p>
               Estamos felizes em informar que seu pedido já está em processo de
@@ -338,7 +372,12 @@ const Checkout: React.FC<CheckoutProps> = ({ setPayment }) => {
               gastronômica. Bom apetite!
             </p>
           </div>
-          <Button type="submit" custom="secundary" title="Concluir">
+          <Button
+            onClick={() => finishPayment()}
+            type="submit"
+            custom="secundary"
+            title="Concluir"
+          >
             Concluir
           </Button>
         </S.OrderContainer>
