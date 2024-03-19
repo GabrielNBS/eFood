@@ -5,7 +5,7 @@ import { RootReducer } from '../../store'
 import { Navigate } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
-import { close } from '../../store/reducers/cart'
+import { close, clear } from '../../store/reducers/cart'
 import InputMask from 'react-input-mask'
 
 import * as Yup from 'yup'
@@ -139,15 +139,13 @@ const Checkout: React.FC<CheckoutProps> = ({ setPayment }) => {
     form.handleSubmit()
   }
 
-  if (items.length === 0) {
-    return <Navigate to={'/'} />
-  }
-
   // Procurar maneira mais efetiva para fazer o reset do formulário sem fazer reset da pagina
   const finishPayment = () => {
     dispatch(close())
+    dispatch(clear())
+    setPayment(false)
+    form.resetForm()
     navigate('/')
-    window.location.reload()
   }
 
   return (
