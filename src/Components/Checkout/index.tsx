@@ -79,7 +79,7 @@ const Checkout: React.FC<CheckoutProps> = ({ setPayment }) => {
         .required('O campo é obrigatório'),
     }),
 
-    // Dados envolvidos pelo formulário
+    // Dados enviados pelo formulário
     onSubmit: (values) => {
       purchase({
         delivery: {
