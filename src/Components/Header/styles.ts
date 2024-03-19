@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import { cores } from '../../styles'
+import vector from '../../assets/images/Vector.svg'
 
 export const Logo = styled.h1`
   margin: 64px 0;
@@ -7,7 +8,11 @@ export const Logo = styled.h1`
 
 export const HeaderSection = styled.section`
   justify-content: center;
-  background: ${cores.amarelo};
+  background: ${cores.vermelho};
+  background-image: url(${vector});
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
 
   .home {
     display: flex;
