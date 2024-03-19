@@ -17,6 +17,7 @@ const RestaurantList = () => {
             infos={restaurant.tipo}
             name={restaurant.titulo}
             key={restaurant.id}
+            destacado={restaurant.destacado === true}
           />
         ))}
       </List>

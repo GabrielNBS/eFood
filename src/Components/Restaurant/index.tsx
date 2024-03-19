@@ -18,6 +18,7 @@ type Props = {
   infos: string
   avaliacoes: number
   id: number
+  destacado: boolean
 }
 
 const Restaurant = ({
@@ -27,10 +28,19 @@ const Restaurant = ({
   image,
   infos,
   name,
+  destacado,
 }: Props) => (
   <Card key={id}>
     <img src={image} alt="Hioki Sushi" />
-    <Infos>{infos}</Infos>
+    <Infos>
+      {destacado ? (
+        <>
+          <Tag>Destaque da Semana</Tag> <Tag>{infos}</Tag>{' '}
+        </>
+      ) : (
+        <Tag>{infos}</Tag>
+      )}
+    </Infos>
     <Restaurante>
       <Titulo>{name}</Titulo>
       <Avaliacoes>
