@@ -26,12 +26,10 @@ const Restaurant: React.FC = () => {
 
   const plates: MenuItem[] = cardapio || []
 
-  const restaurantType = tipo.length > 1 ? tipo[1] : tipo[0]
-
   return (
     <>
       <Header restaurantStyle />
-      <Banner local={restaurantType} name={titulo} photo={capa} />
+      <Banner local={tipo} name={titulo} photo={capa} />
       <Plates cardapio={plates} />
     </>
   )

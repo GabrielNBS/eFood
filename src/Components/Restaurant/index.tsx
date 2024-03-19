@@ -9,6 +9,7 @@ import {
 } from './styles'
 import Button from '../Button'
 import { Link } from 'react-router-dom'
+import Tag from '../Tag'
 
 type Props = {
   name: string
@@ -29,11 +30,7 @@ const Restaurant = ({
 }: Props) => (
   <Card key={id}>
     <img src={image} alt="Hioki Sushi" />
-    {/* <Infos>
-      {infos.map((info) => (
-        <Tag key={info}>{info}</Tag>
-      ))}
-    </Infos> */}
+    <Infos>{infos}</Infos>
     <Restaurante>
       <Titulo>{name}</Titulo>
       <Avaliacoes>
