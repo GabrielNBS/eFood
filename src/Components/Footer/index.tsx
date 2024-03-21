@@ -14,12 +14,14 @@ const Footer = () => (
         </a>
       </li>
       <li>
-        <a href="#"></a>
-        <img src={facebookIcon} alt="" />
+        <a href="#">
+          <img src={facebookIcon} alt="" />
+        </a>
       </li>
       <li>
-        <a href="#"></a>
-        <img src={twiterIcon} alt="" />
+        <a href="#">
+          <img src={twiterIcon} alt="" />
+        </a>
       </li>
     </ListItem>
     <Subtitle>

@@ -10,10 +10,35 @@ export const LogoSVG = styled.img`
   margin: 40px 0 32px;
 `
 export const ListItem = styled.ul`
+  display: flex;
   margin-bottom: 80px;
+  justify-content: center;
 
   li {
-    display: inline-flex;
+    display: flex;
+    cursor: pointer;
+
+    a {
+      display: flex;
+
+      &:hover {
+        animation: jumping 0.5s infinite ease;
+
+        @keyframes jumping {
+          0% {
+            transform: translateY(-5px);
+          }
+
+          50% {
+            transform: translateY(0);
+          }
+
+          100% {
+            transform: translateY(-5px);
+          }
+        }
+      }
+    }
   }
 
   li:nth-child(2) {

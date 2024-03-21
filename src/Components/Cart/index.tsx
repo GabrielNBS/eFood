@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import React from 'react'
 import { close, remove } from '../../store/reducers/cart'
@@ -12,6 +12,7 @@ import Checkout from '../Checkout'
 const Cart: React.FC = () => {
   const { isOpen, items } = useSelector((state: RootReducer) => state.cart)
   const [payment, setPayment] = useState(false)
+  const [transformSideBar, setTransformSideBar] = useState(false)
   const dispatch = useDispatch()
 
   const closeCart = () => {
@@ -31,10 +32,15 @@ const Cart: React.FC = () => {
     dispatch(remove(id))
   }
 
+  // Aplica a transformação da barra lateral sempre que o estado de 'isOpen' for alterado.
+  useEffect(() => {
+    setTransformSideBar(isOpen)
+  }, [isOpen])
+
   return (
     <CartContainer className={isOpen ? 'is-open' : ''}>
       <Overlay onClick={closeCart} />
-      <Sidebar>
+      <Sidebar transform={transformSideBar}>
         {!payment && items.length > 0 ? (
           <ul>
             {items.map((item: Restaurant | MenuItem | null) =>
@@ -70,7 +76,7 @@ const Cart: React.FC = () => {
         ) : (
           items.length === 0 && (
             <div>
-              <h2>Adicione um item ao carrinho</h2>
+              <h2 className="clearCart">Seu carrinho está vazio</h2>
             </div>
           )
         )}

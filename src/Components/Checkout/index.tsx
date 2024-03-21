@@ -52,8 +52,7 @@ const Checkout: React.FC<CheckoutProps> = ({ setPayment }) => {
         .min(3, 'Local inválido')
         .required('O campo é obrigatório'),
       cep: Yup.string()
-        .min(8, 'O campo precisa ter 6 caracteres')
-        .max(9, 'O campo precisa ter 6 caracteres')
+        .min(8, 'O campo precisa ter no mínimo 8 caracteres')
         .required('O campo é obrigatório'),
       number: Yup.string()
         .min(1, 'Endereço inválido')
@@ -120,11 +119,14 @@ const Checkout: React.FC<CheckoutProps> = ({ setPayment }) => {
       !form.errors.city &&
       !form.errors.cep &&
       !form.errors.number &&
+      form.touched.cep &&
       form.touched.fullName
 
-    if (isValid) {
-      setUserAddress(true)
+    if (!isValid) {
+      alert('Todos os campos devem ser preenchidos corretamente!')
+      return setUserAddress(false)
     }
+    return setUserAddress(true)
   }
 
   const checkInputHasError = (fildName: string) => {
@@ -206,7 +208,7 @@ const Checkout: React.FC<CheckoutProps> = ({ setPayment }) => {
             <S.InputGroup>
               <label htmlFor="number">Numero</label>
               <input
-                type="number"
+                type="text"
                 id="number"
                 name="number"
                 value={form.values.number}

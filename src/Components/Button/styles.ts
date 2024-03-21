@@ -25,4 +25,8 @@ export const ButtonLink = styled.button<Props>`
   border: none;
   cursor: pointer;
   font-weight: 700;
+
+  &:hover {
+    filter: brightness(1.1);
+  }
 `
