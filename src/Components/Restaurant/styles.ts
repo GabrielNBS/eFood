@@ -1,11 +1,12 @@
 import styled from 'styled-components'
 import { TagContainer } from '../Tag/styles'
-import { cores } from '../../styles'
+import { BreakPoint, cores } from '../../styles'
 import { ButtonLink } from '../Button/styles'
 
 export const Card = styled.div`
   position: relative;
   max-width: 472px;
+  width: 100%;
   background-color: ${cores.brancoPuro};
   border: 1px solid ${cores.vermelho};
 
@@ -21,6 +22,10 @@ export const Card = styled.div`
     object-fit: cover;
     width: 100%;
     height: 217px;
+  }
+
+  @media (max-width: ${BreakPoint.mobile}) {
+    margin: 0 0 40px;
   }
 `
 

@@ -1,8 +1,6 @@
 import styled from 'styled-components'
 import { BreakPoint, cores } from '../../styles'
 
-import { ButtonLink } from '../Button/styles'
-
 export const PlatesContainer = styled.section`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -13,6 +11,7 @@ export const PlatesContainer = styled.section`
 export const Card = styled.div`
   background-color: ${cores.vermelho};
   display: flex;
+
   flex-direction: column;
   align-items: center;
   padding: 8px;
