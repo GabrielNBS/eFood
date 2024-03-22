@@ -104,7 +104,8 @@ export const ModalContent = styled.div`
     @media (max-width: ${BreakPoint.mobile}) {
       width: 150px;
       height: 150px;
-      margin-bottom: 8px;
+      margin: 0;
+      border-radius: 8px;
     }
   }
 
@@ -129,6 +130,10 @@ export const ModalInfos = styled.div`
     font-size: 18px;
     font-weight: 900;
     line-height: 21.09px;
+
+    @media (max-width: ${BreakPoint.mobile}) {
+      margin: 8px 0;
+    }
   }
 
   p {

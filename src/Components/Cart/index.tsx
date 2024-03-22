@@ -6,7 +6,7 @@ import Button from '../Button'
 import { Overlay, CartContainer, Sidebar, CartItem, Prices } from './styles'
 import lixeira from '../../assets/images/lixeira.png'
 import { RootReducer } from '../../store'
-import { formatPrice } from '../../utils'
+import { formatPrice, getTotalPrice } from '../../utils'
 import Checkout from '../Checkout'
 
 const Cart: React.FC = () => {
@@ -17,15 +17,6 @@ const Cart: React.FC = () => {
 
   const closeCart = () => {
     dispatch(close())
-  }
-
-  const getTotalPrice = () => {
-    return items.reduce((acumulador, valorAtual) => {
-      if (valorAtual && 'preco' in valorAtual) {
-        return (acumulador += valorAtual.preco)
-      }
-      return acumulador
-    }, 0)
   }
 
   const removeItem = (id: number) => {
@@ -63,7 +54,7 @@ const Cart: React.FC = () => {
             )}
             <Prices>
               <p>Valor total</p>
-              <span>{formatPrice(getTotalPrice())}</span>
+              <span>{formatPrice(getTotalPrice(items))}</span>
             </Prices>
             <Button
               onClick={() => setPayment(true)}

@@ -12,6 +12,7 @@ import Button from '../Button'
 
 import * as S from './styles'
 import { usePurchaseMutation } from '../../services/api'
+import { formatPrice, getTotalPrice } from '../../utils'
 
 export type CheckoutProps = {
   setPayment: (payment: boolean) => void
@@ -119,7 +120,6 @@ const Checkout: React.FC<CheckoutProps> = ({ setPayment }) => {
       !form.errors.city &&
       !form.errors.cep &&
       !form.errors.number &&
-      form.touched.cep &&
       form.touched.fullName
 
     if (!isValid) {
@@ -254,7 +254,7 @@ const Checkout: React.FC<CheckoutProps> = ({ setPayment }) => {
       {/* renderiza o formulário no caso dos dados de entrega tiverem valor: true e os dados do cartão tiverem valor:false */}
       {userAddress && !isSuccess && (
         <form onSubmit={form.handleSubmit}>
-          <h2>Teste</h2>
+          <h2>Pagamento - Valor a pagar {formatPrice(getTotalPrice(items))}</h2>
           <S.Row>
             <S.InputGroup>
               <label htmlFor="cardOwner">Nome do cartão</label>

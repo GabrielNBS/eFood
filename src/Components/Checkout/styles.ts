@@ -34,7 +34,35 @@ export const InputGroup = styled.div<Props>`
     padding: 0 8px;
 
     &.error {
-      border: 3px solid ${cores.preto};
+      border: 2px solid ${cores.preto};
+      animation: shake 1s ease-in-out;
+
+      @keyframes shake {
+        0% {
+          transform: translate3d(1px, 0, 0);
+        }
+        10% {
+          transform: translate3d(-1px, 0, 0);
+        }
+        20% {
+          transform: translate3d(1px, 0, 0);
+        }
+        30% {
+          transform: translate3d(-1px, 0, 0);
+        }
+        40% {
+          transform: translate3d(1px, 0, 0);
+        }
+        50% {
+          transform: translate3d(-1px, 0, 0);
+        }
+        60% {
+          transform: translate3d(1px, 0, 0);
+        }
+        70% {
+          transform: translate3d(-1px, 0, 0);
+        }
+      }
     }
   }
 `
