@@ -31,7 +31,7 @@ const Restaurant = ({
   destacado,
 }: Props) => (
   <Card key={id}>
-    <img src={image} alt="Hioki Sushi" />
+    <img src={image} alt={name} />
     <Infos>
       {destacado ? (
         <>

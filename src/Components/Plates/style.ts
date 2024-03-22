@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { BreakPoint, cores } from '../../styles'
 
 import { ButtonLink } from '../Button/styles'
 

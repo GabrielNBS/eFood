@@ -1,6 +1,7 @@
 import styled from 'styled-components'
 import { cores } from '../../styles'
 import vector from '../../assets/images/Vector.svg'
+import { BreakPoint } from '../../styles'
 
 export const Logo = styled.h1`
   margin: 64px 0;
@@ -25,13 +26,35 @@ export const HeaderSection = styled.section`
     justify-content: space-between;
     align-items: center;
 
-    a,
-    span {
+    a {
       font-size: 18px;
       font-weight: 900;
       color: ${cores.vermelho};
       cursor: pointer;
     }
+  }
+`
+
+export const CartDesktop = styled.span`
+  font-size: 18px;
+  font-weight: 900;
+  color: ${cores.vermelho};
+  cursor: pointer;
+
+  @media (max-width: ${BreakPoint.tablet}) {
+    display: none;
+  }
+`
+
+export const CartMobile = styled.span`
+  display: none;
+  font-size: 18px;
+  font-weight: 900;
+  color: ${cores.vermelho};
+  cursor: pointer;
+
+  @media (max-width: ${BreakPoint.tablet}) {
+    display: block;
   }
 `
 

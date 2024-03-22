@@ -30,4 +30,9 @@ const GlobalStyle = createGlobalStyle`
   }
 `
 
+export const BreakPoint = {
+  desktop: '1024px',
+  tablet: '768px',
+}
+
 export default GlobalStyle

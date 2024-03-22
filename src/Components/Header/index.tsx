@@ -5,8 +5,15 @@ import { Link } from 'react-router-dom'
 import { open } from '../../store/reducers/cart'
 import logo from '../../assets/images/logo.svg'
 
-import { HeaderSection, Logo, Paragrafo } from './styles'
+import {
+  HeaderSection,
+  Logo,
+  Paragrafo,
+  CartDesktop,
+  CartMobile,
+} from './styles'
 import { RootReducer } from '../../store'
+import { FaCartShopping } from 'react-icons/fa6'
 
 type Props = {
   restaurantStyle?: boolean
@@ -35,9 +42,12 @@ const Header = ({ restaurantStyle }: Props) => {
                 />
               </Logo>
             </Link>
-            <span onClick={openCart}>
+            <CartMobile onClick={openCart}>
+              <FaCartShopping />
+            </CartMobile>
+            <CartDesktop onClick={openCart}>
               {items.length} produtos(s) no carrinho
-            </span>
+            </CartDesktop>
           </div>
         </>
       ) : (
