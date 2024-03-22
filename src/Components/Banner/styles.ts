@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { BreakPoint, cores } from '../../styles'
 
 export const Img = styled.div`
   background-repeat: no-repeat;
@@ -26,6 +26,10 @@ export const TItulo = styled.h2`
   line-height: 37.5px;
   font-weight: 900;
   font-size: 32px;
+
+  @media (max-width: ${BreakPoint.mobile}) {
+    left: 48px;
+  }
 `
 export const Local = styled.span`
   position: absolute;
@@ -35,4 +39,8 @@ export const Local = styled.span`
   line-height: 37.5px;
   font-weight: 100;
   font-size: 32px;
+
+  @media (max-width: ${BreakPoint.mobile}) {
+    left: 48px;
+  }
 `
