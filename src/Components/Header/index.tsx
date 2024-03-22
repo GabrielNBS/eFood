@@ -14,6 +14,7 @@ import {
 } from './styles'
 import { RootReducer } from '../../store'
 import { FaCartShopping } from 'react-icons/fa6'
+import { BsShopWindow } from 'react-icons/bs'
 
 type Props = {
   restaurantStyle?: boolean
@@ -33,6 +34,9 @@ const Header = ({ restaurantStyle }: Props) => {
         <>
           <div className="container restaurant">
             <Link to="/">Restaurantes</Link>
+            <Link to="/">
+              <BsShopWindow />
+            </Link>
             <Link to="/">
               <Logo>
                 <img

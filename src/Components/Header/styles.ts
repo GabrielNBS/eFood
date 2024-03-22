@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import { cores } from '../../styles'
 import vector from '../../assets/images/Vector.svg'
 import { BreakPoint } from '../../styles'
+import { Link } from 'react-router-dom'
 
 export const Logo = styled.h1`
   margin: 64px 0;
@@ -15,16 +16,14 @@ export const HeaderSection = styled.section`
   background-position: center;
   background-size: cover;
 
-  .home {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-
   .restaurant {
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    @media (max-width: ${BreakPoint.tablet}) {
+      justify-content: space-around;
+    }
 
     a {
       font-size: 18px;
@@ -32,6 +31,26 @@ export const HeaderSection = styled.section`
       color: ${cores.vermelho};
       cursor: pointer;
     }
+
+    a:nth-child(1) {
+      @media (max-width: ${BreakPoint.tablet}) {
+        display: none;
+      }
+    }
+
+    a:nth-child(2) {
+      display: none;
+
+      @media (max-width: ${BreakPoint.tablet}) {
+        display: block;
+      }
+    }
+  }
+
+  .home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
 `
 
