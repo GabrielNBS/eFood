@@ -6,16 +6,28 @@ export const PlatesContainer = styled.section`
   grid-template-columns: repeat(3, 1fr);
   padding: 64px 0 120px;
   gap: 32px;
+
+  @media (max-width: ${BreakPoint.tablet}) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (max-width: ${BreakPoint.mobile}) {
+    grid-template-columns: repeat(1, 1fr);
+  }
 `
 
 export const Card = styled.div`
   background-color: ${cores.vermelho};
   display: flex;
-
+  max-width: 320px;
   flex-direction: column;
   align-items: center;
   padding: 8px;
   justify-content: space-between;
+
+  @media (max-width: ${BreakPoint.tablet}) {
+    margin: 0 auto 40px;
+  }
 `
 
 export const Img = styled.img`
@@ -75,12 +87,25 @@ export const ModalContent = styled.div`
   z-index: 1;
   position: relative;
 
+  @media (max-width: ${BreakPoint.mobile}) {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    height: auto;
+  }
+
   img {
     display: block;
     width: 280px;
     height: 280px;
     margin-right: 24px;
     object-fit: cover;
+
+    @media (max-width: ${BreakPoint.mobile}) {
+      width: 150px;
+      height: 150px;
+      margin-bottom: 8px;
+    }
   }
 
   > button {
