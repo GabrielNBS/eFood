@@ -47,7 +47,14 @@ const Header = ({ restaurantStyle }: Props) => {
               </Logo>
             </Link>
             <CartMobile onClick={openCart}>
-              <FaCartShopping />
+              <i>
+                <FaCartShopping />
+              </i>
+              {items.length > 0 && (
+                <div>
+                  <span>{items.length}</span>
+                </div>
+              )}
             </CartMobile>
             <CartDesktop onClick={openCart}>
               {items.length} produtos(s) no carrinho

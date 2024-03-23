@@ -67,6 +67,7 @@ export const CartDesktop = styled.span`
 
 export const CartMobile = styled.span`
   display: none;
+  position: relative;
   font-size: 18px;
   font-weight: 900;
   color: ${cores.vermelho};
@@ -74,6 +75,18 @@ export const CartMobile = styled.span`
 
   @media (max-width: ${BreakPoint.tablet}) {
     display: block;
+  }
+
+  span {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    top: -20px;
+    left: 10px;
+    border-radius: 50%;
+    border: 1px solid ${cores.vermelho};
+    text-align: center;
+    font-size: 16px;
   }
 `
 
