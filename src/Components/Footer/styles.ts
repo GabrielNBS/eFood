@@ -1,8 +1,8 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { colors } from '../../styles'
 
 export const FooterContainer = styled.section`
-  background-color: ${cores.amarelo};
+  background-color: ${colors.yellow};
   text-align: center;
 `
 
@@ -47,7 +47,7 @@ export const ListItem = styled.ul`
 `
 
 export const Subtitle = styled.h5`
-  color: ${cores.vermelho};
+  color: ${colors.red};
   font-size: 10px;
   padding-bottom: 40px;
   line-height: 11.72px;

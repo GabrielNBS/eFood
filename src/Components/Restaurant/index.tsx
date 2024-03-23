@@ -1,12 +1,5 @@
 import estrela from '../../assets/images/estrela.svg'
-import {
-  Card,
-  Paragrafo,
-  Titulo,
-  Restaurante,
-  Avaliacoes,
-  Infos,
-} from './styles'
+import * as S from './styles'
 import Button from '../Button'
 import { Link } from 'react-router-dom'
 import Tag from '../Tag'
@@ -16,45 +9,45 @@ type Props = {
   description: string
   image: string
   infos: string
-  avaliacoes: number
+  reviews: number
   id: number
-  destacado: boolean
+  featured: boolean
 }
 
 const Restaurant = ({
-  avaliacoes,
+  reviews,
   description,
   id,
   image,
   infos,
   name,
-  destacado,
+  featured,
 }: Props) => (
-  <Card key={id}>
+  <S.Card key={id}>
     <img src={image} alt={name} />
-    <Infos>
-      {destacado ? (
+    <S.Infos>
+      {featured ? (
         <>
           <Tag>Destaque da Semana</Tag> <Tag>{infos}</Tag>{' '}
         </>
       ) : (
         <Tag>{infos}</Tag>
       )}
-    </Infos>
-    <Restaurante>
-      <Titulo>{name}</Titulo>
-      <Avaliacoes>
-        <span>{avaliacoes}</span>
+    </S.Infos>
+    <S.Restaurant>
+      <S.Title>{name}</S.Title>
+      <S.Reviews>
+        <span>{reviews}</span>
         <img src={estrela} alt="Estrela de avaliacao" />
-      </Avaliacoes>
-    </Restaurante>
-    <Paragrafo>{description}</Paragrafo>
+      </S.Reviews>
+    </S.Restaurant>
+    <S.Paragraph>{description}</S.Paragraph>
     <Link to={`/restaurant/${id}`}>
       <Button type="button" title="Clique aqui para saber mais">
         Saiba mais
       </Button>
     </Link>
-  </Card>
+  </S.Card>
 )
 
 export default Restaurant

@@ -22,15 +22,20 @@ const Restaurant: React.FC = () => {
     return <div>Restaurante não encontrado</div>
   }
 
-  const { titulo, tipo, capa, cardapio } = selectedRestaurant
+  const {
+    titulo: title,
+    tipo: type,
+    capa: banner,
+    cardapio: menu,
+  } = selectedRestaurant
 
-  const plates: MenuItem[] = cardapio || []
+  const plates: MenuItem[] = menu || []
 
   return (
     <>
       <Header restaurantStyle />
-      <Banner local={tipo} name={titulo} photo={capa} />
-      <Plates cardapio={plates} />
+      <Banner local={type} name={title} photo={banner} />
+      <Plates menu={plates} />
     </>
   )
 }

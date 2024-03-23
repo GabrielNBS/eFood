@@ -1,13 +1,15 @@
+import React from 'react'
 import { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import React from 'react'
+
 import { close, remove } from '../../store/reducers/cart'
-import Button from '../Button'
-import { Overlay, CartContainer, Sidebar, CartItem, Prices } from './styles'
-import lixeira from '../../assets/images/lixeira.png'
+import * as S from './styles'
 import { RootReducer } from '../../store'
 import { formatPrice, getTotalPrice } from '../../utils'
+
+import Button from '../Button'
 import Checkout from '../Checkout'
+import lixeira from '../../assets/images/lixeira.png'
 
 const Cart: React.FC = () => {
   const { isOpen, items } = useSelector((state: RootReducer) => state.cart)
@@ -29,14 +31,14 @@ const Cart: React.FC = () => {
   }, [isOpen])
 
   return (
-    <CartContainer className={isOpen ? 'is-open' : ''}>
-      <Overlay onClick={closeCart} />
-      <Sidebar transform={transformSideBar}>
+    <S.CartContainer className={isOpen ? 'is-open' : ''}>
+      <S.Overlay onClick={closeCart} />
+      <S.Sidebar transform={transformSideBar}>
         {!payment && items.length > 0 ? (
           <ul>
             {items.map((item: Restaurant | MenuItem | null) =>
               item ? (
-                <CartItem key={item.id}>
+                <S.CartItem key={item.id}>
                   {'foto' in item && 'nome' in item && 'preco' in item ? (
                     <>
                       <img src={item.foto} alt={item.nome} />
@@ -49,16 +51,16 @@ const Cart: React.FC = () => {
                       </button>
                     </>
                   ) : null}
-                </CartItem>
+                </S.CartItem>
               ) : null
             )}
-            <Prices>
+            <S.Prices>
               <p>Valor total</p>
               <span>{formatPrice(getTotalPrice(items))}</span>
-            </Prices>
+            </S.Prices>
             <Button
               onClick={() => setPayment(true)}
-              custom="secundary"
+              custom="secondary"
               title="Continuar para a entrega"
             >
               Continuar com a entrega
@@ -72,8 +74,8 @@ const Cart: React.FC = () => {
           )
         )}
         {payment && <Checkout setPayment={setPayment} />}
-      </Sidebar>
-    </CartContainer>
+      </S.Sidebar>
+    </S.CartContainer>
   )
 }
 

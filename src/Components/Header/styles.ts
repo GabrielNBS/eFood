@@ -1,8 +1,7 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { colors } from '../../styles'
 import vector from '../../assets/images/Vector.svg'
 import { BreakPoint } from '../../styles'
-import { Link } from 'react-router-dom'
 
 export const Logo = styled.h1`
   margin: 64px 0;
@@ -10,7 +9,7 @@ export const Logo = styled.h1`
 
 export const HeaderSection = styled.section`
   justify-content: center;
-  background: ${cores.vermelho};
+  background: ${colors.red};
   background-image: url(${vector});
   background-repeat: no-repeat;
   background-position: center;
@@ -28,7 +27,7 @@ export const HeaderSection = styled.section`
     a {
       font-size: 18px;
       font-weight: 900;
-      color: ${cores.vermelho};
+      color: ${colors.red};
       cursor: pointer;
     }
 
@@ -57,7 +56,7 @@ export const HeaderSection = styled.section`
 export const CartDesktop = styled.span`
   font-size: 18px;
   font-weight: 900;
-  color: ${cores.vermelho};
+  color: ${colors.red};
   cursor: pointer;
 
   @media (max-width: ${BreakPoint.tablet}) {
@@ -70,7 +69,7 @@ export const CartMobile = styled.span`
   position: relative;
   font-size: 18px;
   font-weight: 900;
-  color: ${cores.vermelho};
+  color: ${colors.red};
   cursor: pointer;
 
   @media (max-width: ${BreakPoint.tablet}) {
@@ -84,7 +83,7 @@ export const CartMobile = styled.span`
     top: -20px;
     left: 10px;
     border-radius: 50%;
-    border: 1px solid ${cores.vermelho};
+    border: 1px solid ${colors.red};
     text-align: center;
     font-size: 16px;
   }
@@ -92,7 +91,7 @@ export const CartMobile = styled.span`
 
 export const Paragrafo = styled.p`
   margin-bottom: 40px;
-  color: ${cores.vermelho};
+  color: ${colors.red};
   font-size: 36px;
   font-weight: 900;
   text-align: center;

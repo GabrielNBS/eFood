@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { BreakPoint, cores } from '../../styles'
+import { BreakPoint, colors } from '../../styles'
 
 export const PlatesContainer = styled.section`
   display: grid;
@@ -17,7 +17,7 @@ export const PlatesContainer = styled.section`
 `
 
 export const Card = styled.div`
-  background-color: ${cores.vermelho};
+  background-color: ${colors.red};
   display: flex;
   max-width: 320px;
   flex-direction: column;
@@ -39,7 +39,7 @@ export const NamePlate = styled.h3`
   font-size: 16px;
   font-weight: 900;
   line-height: 18.75px;
-  color: ${cores.branco};
+  color: ${colors.white};
   align-self: flex-start;
   padding: 8px 0;
 `
@@ -47,7 +47,7 @@ export const NamePlate = styled.h3`
 export const Description = styled.p`
   line-height: 22px;
   font-size: 14px;
-  color: ${cores.branco};
+  color: ${colors.white};
   padding-bottom: 8px;
 `
 export const ModalContainer = styled.div`
@@ -82,7 +82,7 @@ export const ModalContent = styled.div`
   display: flex;
   width: 100%;
   height: 344px;
-  background-color: ${cores.vermelho};
+  background-color: ${colors.red};
   padding: 32px;
   z-index: 1;
   position: relative;
@@ -124,7 +124,7 @@ export const ModalContent = styled.div`
 `
 
 export const ModalInfos = styled.div`
-  color: ${cores.brancoPuro};
+  color: ${colors.pureWhite};
 
   h2 {
     font-size: 18px;
@@ -149,7 +149,7 @@ export const ModalInfos = styled.div`
   }
 
   button {
-    color: ${cores.vermelho};
-    background-color: ${cores.branco};
+    color: ${colors.red};
+    background-color: ${colors.white};
   }
 `

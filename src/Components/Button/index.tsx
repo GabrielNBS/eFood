@@ -6,7 +6,7 @@ export type Props = {
   to?: string
   onClick?: () => void
   onSubmit?: () => void
-  custom?: 'primary' | 'secundary'
+  custom?: 'primary' | 'secondary'
   type?: string
 }
 
@@ -14,7 +14,6 @@ const Button = ({
   children,
   onClick,
   title,
-  to,
   custom,
   type = 'button',
 }: Props) => (

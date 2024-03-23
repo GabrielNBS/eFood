@@ -1,27 +1,27 @@
 import Product from '../Restaurant'
-import { List, ProductSection } from './styles'
+import * as S from './styles'
 import { useGetRestaurantsQuery } from '../../services/api'
 
 const RestaurantList = () => {
   const { data: restaurants, isLoading } = useGetRestaurantsQuery()
 
   return (
-    <ProductSection className="container">
-      <List>
+    <S.ProductSection className="container">
+      <S.List>
         {restaurants?.map((restaurant) => (
           <Product
-            avaliacoes={restaurant.avaliacao}
+            reviews={restaurant.avaliacao}
             description={restaurant.descricao}
             id={restaurant.id}
             image={restaurant.capa}
             infos={restaurant.tipo}
             name={restaurant.titulo}
             key={restaurant.id}
-            destacado={restaurant.destacado === true}
+            featured={restaurant.destacado === true}
           />
         ))}
-      </List>
-    </ProductSection>
+      </S.List>
+    </S.ProductSection>
   )
 }
 

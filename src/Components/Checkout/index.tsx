@@ -233,7 +233,7 @@ const Checkout: React.FC<CheckoutProps> = ({ setPayment }) => {
           <S.ButtonGroup>
             <Button
               onClick={() => formAddressIsValid()}
-              custom="secundary"
+              custom="secondary"
               title="Continuar com o pagamento"
               type="button"
             >
@@ -241,7 +241,7 @@ const Checkout: React.FC<CheckoutProps> = ({ setPayment }) => {
             </Button>
             <Button
               onClick={() => setPayment(false)}
-              custom="secundary"
+              custom="secondary"
               title="Voltar para o carrinho"
               type="button"
             >
@@ -332,14 +332,14 @@ const Checkout: React.FC<CheckoutProps> = ({ setPayment }) => {
               type="button"
               onClick={confirmPayment}
               title="Finalizar Pagamento"
-              custom="secundary"
+              custom="secondary"
             >
               Finalizar Pagamento
             </Button>
             <Button
               type="button"
               title="Voltar para a edição de endereço"
-              custom="secundary"
+              custom="secondary"
               onClick={() => setUserAddress(false)}
             >
               Voltar para a edição de endereço
@@ -374,7 +374,7 @@ const Checkout: React.FC<CheckoutProps> = ({ setPayment }) => {
           <Button
             onClick={() => finishPayment()}
             type="submit"
-            custom="secundary"
+            custom="secondary"
             title="Concluir"
           >
             Concluir

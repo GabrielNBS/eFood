@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { BreakPoint, cores } from '../../styles'
+import { BreakPoint, colors } from '../../styles'
 
 export const Img = styled.div`
   background-repeat: no-repeat;
@@ -14,7 +14,7 @@ export const Img = styled.div`
     position: absolute;
     width: 100%;
     height: 100%;
-    background-color: ${cores.preto};
+    background-color: ${colors.black};
     opacity: 0.5;
   }
 `
@@ -22,7 +22,7 @@ export const TItulo = styled.h2`
   position: absolute;
   bottom: 32px;
   left: 170px;
-  color: ${cores.brancoPuro};
+  color: ${colors.pureWhite};
   line-height: 37.5px;
   font-weight: 900;
   font-size: 32px;
@@ -35,7 +35,7 @@ export const Local = styled.span`
   position: absolute;
   top: 24px;
   left: 170px;
-  color: ${cores.brancoPuro};
+  color: ${colors.pureWhite};
   line-height: 37.5px;
   font-weight: 100;
   font-size: 32px;

@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { colors } from '../../styles'
 
 export const Overlay = styled.div`
   position: absolute;
@@ -13,7 +13,7 @@ export const Overlay = styled.div`
 `
 
 export const Sidebar = styled.aside<{ transform: boolean }>`
-  background-color: ${cores.vermelho};
+  background-color: ${colors.red};
   max-width: 360px;
   width: 360px;
   padding: 32px 8px 0;
@@ -27,7 +27,7 @@ export const Sidebar = styled.aside<{ transform: boolean }>`
   }
 
   .clearCart {
-    color: ${cores.branco};
+    color: ${colors.white};
     text-align: center;
   }
 `
@@ -49,8 +49,8 @@ export const CartContainer = styled.div`
 `
 
 export const CartItem = styled.li`
-  background-color: ${cores.branco};
-  color: ${cores.vermelho};
+  background-color: ${colors.white};
+  color: ${colors.red};
   display: flex;
   padding: 8px 8px 12px;
   margin-bottom: 16px;
@@ -88,6 +88,6 @@ export const CartItem = styled.li`
 export const Prices = styled.div`
   display: flex;
   justify-content: space-between;
-  color: ${cores.branco};
+  color: ${colors.white};
   margin: 40px 0 16px;
 `

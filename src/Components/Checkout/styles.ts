@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { cores } from '../../styles'
+import { colors } from '../../styles'
 
 export type Props = {
   maxWidth?: string
@@ -7,7 +7,7 @@ export type Props = {
 
 export const CheckoutContainer = styled.div`
   font-size: 16px;
-  color: ${cores.branco};
+  color: ${colors.white};
 
   form {
     h2 {
@@ -34,7 +34,7 @@ export const InputGroup = styled.div<Props>`
     padding: 0 8px;
 
     &.error {
-      border: 2px solid ${cores.preto};
+      border: 2px solid ${colors.black};
       animation: shake 1s ease-in-out;
 
       @keyframes shake {

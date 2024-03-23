@@ -5,13 +5,7 @@ import { Link } from 'react-router-dom'
 import { open } from '../../store/reducers/cart'
 import logo from '../../assets/images/logo.svg'
 
-import {
-  HeaderSection,
-  Logo,
-  Paragrafo,
-  CartDesktop,
-  CartMobile,
-} from './styles'
+import * as S from './styles'
 import { RootReducer } from '../../store'
 import { FaCartShopping } from 'react-icons/fa6'
 import { BsShopWindow } from 'react-icons/bs'
@@ -29,7 +23,7 @@ const Header = ({ restaurantStyle }: Props) => {
   }
 
   return (
-    <HeaderSection>
+    <S.HeaderSection>
       {restaurantStyle ? (
         <>
           <div className="container restaurant">
@@ -38,15 +32,15 @@ const Header = ({ restaurantStyle }: Props) => {
               <BsShopWindow />
             </Link>
             <Link to="/">
-              <Logo>
+              <S.Logo>
                 <img
                   src={logo}
                   alt="Logo eFood
           "
                 />
-              </Logo>
+              </S.Logo>
             </Link>
-            <CartMobile onClick={openCart}>
+            <S.CartMobile onClick={openCart}>
               <i>
                 <FaCartShopping />
               </i>
@@ -55,31 +49,31 @@ const Header = ({ restaurantStyle }: Props) => {
                   <span>{items.length}</span>
                 </div>
               )}
-            </CartMobile>
-            <CartDesktop onClick={openCart}>
+            </S.CartMobile>
+            <S.CartDesktop onClick={openCart}>
               {items.length} produtos(s) no carrinho
-            </CartDesktop>
+            </S.CartDesktop>
           </div>
         </>
       ) : (
         <>
           <div className="container home">
-            <Logo>
+            <S.Logo>
               <img
                 src={logo}
                 alt="Logo eFood
           "
               />
-            </Logo>
+            </S.Logo>
           </div>
-          <Paragrafo>
+          <S.Paragrafo>
             Viva experiências gastronômicas
             <br />
             no conforto da sua casa
-          </Paragrafo>
+          </S.Paragrafo>
         </>
       )}
-    </HeaderSection>
+    </S.HeaderSection>
   )
 }
 

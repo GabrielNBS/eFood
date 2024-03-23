@@ -6,9 +6,13 @@ type Props = {
   photo: string
 }
 
+const capitalizeFirstLetter = (str: string) => {
+  return str.charAt(0).toUpperCase() + str.slice(1)
+}
+
 const Banner = ({ local, name, photo }: Props) => (
   <S.Img style={{ backgroundImage: `url(${photo})` }}>
-    <S.Local>{local}</S.Local>
+    <S.Local>{capitalizeFirstLetter(local)}</S.Local>
     <S.TItulo>{name}</S.TItulo>
   </S.Img>
 )

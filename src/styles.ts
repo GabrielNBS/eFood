@@ -1,11 +1,11 @@
 import { createGlobalStyle } from 'styled-components'
 
-export const cores = {
-  vermelho: '#E66767',
-  branco: '#FFF8F2',
-  amarelo: '#FFEBD9',
-  brancoPuro: '#fff',
-  preto: '#000000',
+export const colors = {
+  red: '#E66767',
+  white: '#FFF8F2',
+  yellow: '#FFEBD9',
+  pureWhite: '#fff',
+  black: '#000000',
 }
 
 const GlobalStyle = createGlobalStyle`
@@ -19,7 +19,7 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'Roboto', sans-serif;
 
       body {
-        background-color: ${cores.branco};
+        background-color: ${colors.white};
       }
 
     .container {
