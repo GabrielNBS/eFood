@@ -13,7 +13,7 @@ const capitalizeFirstLetter = (str: string) => {
 const Banner = ({ local, name, photo }: Props) => (
   <S.Img style={{ backgroundImage: `url(${photo})` }}>
     <S.Local>{capitalizeFirstLetter(local)}</S.Local>
-    <S.TItulo>{name}</S.TItulo>
+    <S.Title>{name}</S.Title>
   </S.Img>
 )
 

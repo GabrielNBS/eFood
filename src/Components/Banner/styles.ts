@@ -18,7 +18,7 @@ export const Img = styled.div`
     opacity: 0.5;
   }
 `
-export const TItulo = styled.h2`
+export const Title = styled.h2`
   position: absolute;
   bottom: 32px;
   left: 170px;
