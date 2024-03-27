@@ -4,6 +4,7 @@ import { useGetTypeQuery } from '../../services/api'
 import Banner from '../../Components/Banner'
 import Header from '../../Components/Header'
 import Plates from '../../Components/Plates'
+import Loader from '../../Components/Loader'
 
 const Restaurant: React.FC = () => {
   const { id } = useParams<{ id: string }>()
@@ -15,7 +16,7 @@ const Restaurant: React.FC = () => {
   }
 
   if (isLoading) {
-    return <div>Carregando...</div>
+    return <Loader />
   }
 
   if (!selectedRestaurant) {

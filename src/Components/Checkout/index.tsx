@@ -140,7 +140,6 @@ const Checkout: React.FC<CheckoutProps> = ({ setPayment }) => {
     form.handleSubmit()
   }
 
-  // Procurar maneira mais efetiva para fazer o reset do formulário sem fazer reset da pagina
   const finishPayment = () => {
     dispatch(close())
     dispatch(clear())

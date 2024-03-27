@@ -18,6 +18,7 @@ const RestaurantList = () => {
             name={restaurant.titulo}
             key={restaurant.id}
             featured={restaurant.destacado === true}
+            isLoading={isLoading}
           />
         ))}
       </S.List>
