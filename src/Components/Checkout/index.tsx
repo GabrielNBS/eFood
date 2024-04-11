@@ -68,14 +68,8 @@ const Checkout: React.FC<CheckoutProps> = ({ setPayment }) => {
         .min(3)
         .max(3)
         .required('O campo é obrigatório'),
-      monthOfMaturity: Yup.string()
-        .min(2)
-        .min(2)
-        .required('O campo é obrigatório'),
-      yearOfMaturity: Yup.string()
-        .min(2)
-        .max(2)
-        .required('O campo é obrigatório'),
+      monthOfMaturity: Yup.string().min(1).required('O campo é obrigatório'),
+      yearOfMaturity: Yup.string().min(24).required('O campo é obrigatório'),
     }),
 
     // Dados enviados pelo formulário
@@ -234,7 +228,7 @@ const Checkout: React.FC<CheckoutProps> = ({ setPayment }) => {
               onClick={() => formAddressIsValid()}
               custom="secondary"
               title="Continuar com o pagamento"
-              type="button"
+              type="submit"
             >
               Continuar com o pagamento
             </Button>
@@ -292,7 +286,7 @@ const Checkout: React.FC<CheckoutProps> = ({ setPayment }) => {
                 onChange={form.handleChange}
                 onBlur={form.handleBlur}
                 className={
-                  checkInputHasError('cardSecutiryNumber') ? 'error' : ''
+                  checkInputHasError('cardSecurityNumber') ? 'error' : ''
                 }
                 mask="999"
               />
