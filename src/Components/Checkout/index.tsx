@@ -45,6 +45,7 @@ const Checkout: React.FC<CheckoutProps> = ({ setPayment }) => {
     validationSchema: Yup.object({
       fullName: Yup.string()
         .min(5, 'O nome precisa ter pelo menos 5 caracteres')
+        .matches(/^[a-zA-Z\s]+$/, 'O nome só pode conter letras')
         .required('O campo é obrigatório'),
       address: Yup.string()
         .min(5, 'Endereço inválido')
@@ -59,6 +60,7 @@ const Checkout: React.FC<CheckoutProps> = ({ setPayment }) => {
         .min(1, 'Endereço inválido')
         .required('O campo é obrigatório'),
       cardOwner: Yup.string()
+        .matches(/^[a-zA-Z\s]+$/, 'O nome só pode conter letras')
         .min(5, 'O nome precisa ter pelo menos 5 caracteres')
         .required('O campo é obrigatório'),
       cardNumber: Yup.string()
@@ -68,8 +70,14 @@ const Checkout: React.FC<CheckoutProps> = ({ setPayment }) => {
         .min(3)
         .max(3)
         .required('O campo é obrigatório'),
-      monthOfMaturity: Yup.string().min(1).required('O campo é obrigatório'),
-      yearOfMaturity: Yup.string().min(24).required('O campo é obrigatório'),
+      monthOfMaturity: Yup.string()
+        .min(2, 'Mês inválido')
+        .matches(/^[1-9][0-9]*$/, 'Mês inválido')
+        .required('O campo é obrigatório'),
+      yearOfMaturity: Yup.string()
+        .min(2, `O ano de vencimento precisa ser maior ou igual a ano atual`)
+        .required('O campo é obrigatório')
+        .matches(/^[1-9][0-9]*$/, 'Ano inválido'),
     }),
 
     // Dados enviados pelo formulário
@@ -158,6 +166,12 @@ const Checkout: React.FC<CheckoutProps> = ({ setPayment }) => {
               onChange={form.handleChange}
               onBlur={form.handleBlur}
               className={checkInputHasError('fullName') ? 'error' : ''}
+              onKeyDown={(event) => {
+                const key = event.key
+                if (/\d/.test(key)) {
+                  event.preventDefault()
+                }
+              }}
             />
           </S.InputGroup>
           <S.InputGroup>
@@ -259,6 +273,12 @@ const Checkout: React.FC<CheckoutProps> = ({ setPayment }) => {
                 onChange={form.handleChange}
                 onBlur={form.handleBlur}
                 className={checkInputHasError('cardOwner') ? 'error' : ''}
+                onKeyDown={(event) => {
+                  const key = event.key
+                  if (/\d/.test(key)) {
+                    event.preventDefault()
+                  }
+                }}
               />
             </S.InputGroup>
           </S.Row>
